@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Nigirizushi",
+        "des" : "Serve with Shoyu",
+        "price": "40"
+    },
+    {
+        "name": "Gunkanmaki",
+        "des" : "Serve with Shoyu",
+        "price": "50"
+    },
+    {
+        "name": "Oshizushi",
+        "des" : "Serve with Shoyu",
+        "price": "60"
+    },
+    {
+        "name": "Inarizushi",
+        "des" : "Serve with Shoyu",
+        "price": "40"
+    },
+    {
+        "name": "Makizushi",
+        "des" : "Serve with Shoyu",
+        "price": "20"
+    },
+    {
+        "name": "Chirashizushi",
+        "des" : "Serve with Shoyu",
+        "price": "500"
+    }
+]
