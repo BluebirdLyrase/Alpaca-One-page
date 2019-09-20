@@ -109,9 +109,6 @@ document.addEventListener('init', function (event) {
     }
 
     if (page.id === "Food") {
-
-       
-
         /////////////////////Append Food Menu Card////////////////////////////////////
         $.get("js/data.json", function (data, status) {
             ID = localStorage.getItem("selected");
