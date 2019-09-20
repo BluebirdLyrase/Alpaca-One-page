@@ -1,3 +1,16 @@
+// Your web app's Firebase configuration
+var firebaseConfig = {
+    apiKey: "AIzaSyC2pyNOOA-f53D-UCcoGQPJECnEc5SLC6g",
+    authDomain: "alpaca-one-page.firebaseapp.com",
+    databaseURL: "https://alpaca-one-page.firebaseio.com",
+    projectId: "alpaca-one-page",
+    storageBucket: "alpaca-one-page.appspot.com",
+    messagingSenderId: "598311265035",
+    appId: "1:598311265035:web:602895d35ecefd48b8f80e"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+var db = firebase.firestore();
 function setIDtoFoodMenu(ID) {
     console.log("card pressed");
     localStorage.setItem("selected", ID);
@@ -155,43 +168,55 @@ document.addEventListener('init', function (event) {
         });
         /////////////////////End of Append Food Menu Card////////////////////////////////////
 
- 
+
 
     }
+    if (page.id === "Category") {
+        /////////////////////Append Category Card////////////////////////////////////
+        db.collection("Category").get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                var Categorycard = `<ons-col width="50%" style="height: 80%;">
+                <ons-card style="width: 90%;height: 90%; text-align: center;">
+                    <img  src=${doc.data().img}alt="Onsen UI" style="width: 100px ; height: 75px;">
+                    <div>${doc.data().name}</div>
+                </ons-card>
+            </ons-col>`;
+            console.log(Categorycard);
+            $('#categorycard').append(Categorycard);
+            });
+        });
+        /////////////////////End of Append Category Card////////////////////////////////////
+    }
 
+    if (page.id === "Login") {
+        $("#signinbtn").click(function () {
+            console.log("signinbtn pressed");
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
 
+            if (username === 'Admin' && password === '123') {
+                document.querySelector('ons-navigator').resetToPage('splitter.html');
+            } else {
+                ons.notification.alert('Incorrect username or password.');
+            }
 
+        });
 
-
-
-
-    $("#signinbtn").click(function () {
-        console.log("signinbtn pressed");
-        var username = document.getElementById('username').value;
-        var password = document.getElementById('password').value;
-
-        if (username === 'Admin' && password === '123') {
+        $("#facebookbtn").click(function () {
+            console.log("facebookbtn pressed");
             document.querySelector('ons-navigator').resetToPage('splitter.html');
-        } else {
-            ons.notification.alert('Incorrect username or password.');
-        }
+        });
 
-    });
+        $("#googlebtn").click(function () {
+            console.log("googlebtn pressed");
+            document.querySelector('ons-navigator').resetToPage('splitter.html');
+        });
 
-    $("#facebookbtn").click(function () {
-        console.log("facebookbtn pressed");
-        document.querySelector('ons-navigator').resetToPage('splitter.html');
-    });
-
-    $("#googlebtn").click(function () {
-        console.log("googlebtn pressed");
-        document.querySelector('ons-navigator').resetToPage('splitter.html');
-    });
-
-    $("#regisbtn2").click(function () {
-        console.log('regisbtn pressed');
-        content.load('regis.html')
-    });
+        $("#regisbtn2").click(function () {
+            console.log('regisbtn pressed');
+            content.load('regis.html')
+        });
+    }
 
     $("#regisNsigninbtn").click(function () {
         console.log("signinbtn pressed");
@@ -202,10 +227,6 @@ document.addEventListener('init', function (event) {
     $("#backbtn").click(function () {
         document.querySelector('ons-navigator').resetToPage('splitter.html');
     });
-
-
-
-
 
 });
 
