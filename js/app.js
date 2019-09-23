@@ -133,7 +133,7 @@ document.addEventListener('init', function (event) {
             var Menucard = `<div style="text-align: center">
             <img src=${doc.data().img} alt="Onsen UI"style="width: 80%; height :auto; text-align: center">
             </div>
-            <div style="font-size: 17px; margin-top:10px;"><b>${doc.data().name}</b></div>
+            <div style="font-size: 17px; margin-top:10px;"><b${doc.data().name}</b></div>
             <div style="color:grey">Distance :${doc.data().distance}</div>
             <ons-row style = "margin-top:7px;">
             <ons-col width="50%">`
@@ -201,11 +201,20 @@ document.addEventListener('init', function (event) {
             var username = document.getElementById('username').value;
             var password = document.getElementById('password').value;
 
-            if (username === 'Admin' && password === '123') {
-                document.querySelector('ons-navigator').resetToPage('splitter.html');
-            } else {
-                ons.notification.alert('Incorrect username or password.');
-            }
+            // if (username === 'Admin' && password === '123') {
+            //     document.querySelector('ons-navigator').resetToPage('splitter.html');
+            // } else {
+            //     ons.notification.alert('Incorrect username or password.');
+            // }
+
+            firebase.auth().signInWithEmailAndPassword(username, password).catch(function (error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // ...
+                console.log(errorCode);
+                console.log(errorMessage);
+              });
 
         });
 
