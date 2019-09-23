@@ -112,7 +112,7 @@ document.addEventListener('init', function (event) {
                 Rescard += '</ons-col>';
                 if (doc.data().status) Rescard += '<ons-col width="45%"  style="text-align: right ;color:green;" ><b>Open</b></ons-col>';
                 else Rescard += '<ons-col width="45%"  style="text-align: right ;color:red;" ><b>Close</b></ons-col>';
-                
+
                 Rescard += '</ons-row></ons-col></ons-row></ons-card>'
                 console.log(Rescard);
                 $('#Resturantcard').append(Rescard);
@@ -126,100 +126,58 @@ document.addEventListener('init', function (event) {
     }
 
     if (page.id === "Food") {
-    //     ID = localStorage.getItem("selected");
-    //     /////////////////////Append Food Menu Card////////////////////////////////////
-    //     db.collection("Resturant").doc(ID).get().then((querySnapshot) => {
-    //         querySnapshot.forEach((doc) => {
-    //         console.log(doc.data().name);
-    //         var Menucard = `<div style="text-align: center">
-    //         <img src=${Res.img} alt="Onsen UI"style="width: 80%; height :auto; text-align: center">
-    //         </div>
-    //         <div style="font-size: 17px; margin-top:10px;"><b${Res.Name}</b></div>
-    //         <div style="color:grey">Distance :${Res.Distance}</div>
-    //         <ons-row style = "margin-top:7px;">
-    //         <ons-col width="50%">`
-    //         for (var i = Res.Star; i > 0; i--) {
-    //             Menucard += '<i class="fas fa-star" style="color: rgb(255, 163, 26)"></i>';
-    //         }
-    //         for (var i = (5 - Res.Star); i > 0; i--) {
-    //             Menucard += '<i class="fas fa-star" style="color:grey"></i>';
-    //         }
-    //         Menucard += '</ons-col>';
+        ID = localStorage.getItem("selected");
+        /////////////////////Append Food Menu Card////////////////////////////////////
+        db.collection("Resturant").doc(ID).get().then(function (doc) {
 
-    //         if (Res.Status === "open") Menucard += '<ons-col width="45%"  style="text-align: right ;color:green;" ><b>Open</b></ons-col>';
-    //         else if (Res.Status === "close") Menucard += '<ons-col width="45%"  style="text-align: right ;color:red;" ><b>Close</b></ons-col>';
-    //         else Menucard += '<ons-col width="45%"  style="text-align: right ;color:grey;" ><b>Unknown</b></ons-col>';
+            var Menucard = `<div style="text-align: center">
+            <img src=${doc.data().img} alt="Onsen UI"style="width: 80%; height :auto; text-align: center">
+            </div>
+            <div style="font-size: 17px; margin-top:10px;"><b>${doc.data().name}</b></div>
+            <div style="color:grey">Distance :${doc.data().distance}</div>
+            <ons-row style = "margin-top:7px;">
+            <ons-col width="50%">`
+            for (var i = doc.data().star; i > 0; i--) {
+                Menucard += '<i class="fas fa-star" style="color: rgb(255, 163, 26)"></i>';
+            }
+            for (var i = (5 - doc.data().star); i > 0; i--) {
+                Menucard += '<i class="fas fa-star" style="color:grey"></i>';
+            }
+            Menucard += '</ons-col>';
+
+            if (doc.data().status) Menucard += '<ons-col width="45%"  style="text-align: right ;color:green;" ><b>Open</b></ons-col>';
+            else Menucard += '<ons-col width="45%"  style="text-align: right ;color:red;" ><b>Close</b></ons-col>';
 
 
-    //         Menucard += '</ons-col>';
-    //         Menucard += '</ons-row>';
-    //         Menucard += '<hr>';
-    //         Menucard += '<div style="font-size: 16px; margin-top:10px;"><b>Menu</b></div>';
-    //         console.log(Menucard);
-    //         $('#foodcard').append(Menucard);
-    //         for (var index in Res.Food) {
-    //             var Food = Res.Food[index];
-    //             Foodcard = '<ons-row><ons-col width="60%">';
-    //             Foodcard += '<div style="font-size: 15px; margin-top:10px;">' + Food.name + '</div>';
-    //             Foodcard += '<div style="font-size: 12px; color:grey ">' + Food.des + '</div>';
-    //             Foodcard += '</ons-col>';
-    //             Foodcard += '<ons-col width="20%" style="margin-top:8%">฿' + Food.price + '</ons-col>';
-    //             Foodcard += '<ons-col width="11%" style="margin-left:8px; margin-top:7%">';
-    //             Foodcard += '<ons-button onclick="buybtn(`' + Food.name + '`,`' + Food.price + '`)" style="background-color: rgb(255, 163, 26); color:white; width: 45px; height: 25px; ">';
-    //             Foodcard += '<div class="buybtn">+</div></ons-button></ons-col></ons-row>';
-    //             $('#foodcard').append(Foodcard);
-    //         }
-    //     });
-    // });
-
-    $.get("js/data.json", function (data, status) {
-        ID = 1
-        var Res = data[ID];
-        console.log(Res.Name);
-        var Menucard = `<div style="text-align: center">
-        <img src=${Res.img} alt="Onsen UI"style="width: 80%; height :auto; text-align: center">
-        </div>
-        <div style="font-size: 17px; margin-top:10px;"><b${Res.Name}</b></div>
-        <div style="color:grey">Distance :${Res.Distance}</div>
-        <ons-row style = "margin-top:7px;">
-        <ons-col width="50%">`
-        for (var i = Res.Star; i > 0; i--) {
-            Menucard += '<i class="fas fa-star" style="color: rgb(255, 163, 26)"></i>';
-        }
-        for (var i = (5 - Res.Star); i > 0; i--) {
-            Menucard += '<i class="fas fa-star" style="color:grey"></i>';
-        }
-        Menucard += '</ons-col>';
-
-        if (Res.Status === "open") Menucard += '<ons-col width="45%"  style="text-align: right ;color:green;" ><b>Open</b></ons-col>';
-        else if (Res.Status === "close") Menucard += '<ons-col width="45%"  style="text-align: right ;color:red;" ><b>Close</b></ons-col>';
-        else Menucard += '<ons-col width="45%"  style="text-align: right ;color:grey;" ><b>Unknown</b></ons-col>';
-
-
-        Menucard += '</ons-col>';
-        Menucard += '</ons-row>';
-        Menucard += '<hr>';
-        Menucard += '<div style="font-size: 16px; margin-top:10px;"><b>Menu</b></div>';
-        console.log(Menucard);
-        $('#foodcard').append(Menucard);
-        for (var index in Res.Food) {
-            var Food = Res.Food[index];
-            Foodcard = '<ons-row><ons-col width="60%">';
-            Foodcard += '<div style="font-size: 15px; margin-top:10px;">' + Food.name + '</div>';
-            Foodcard += '<div style="font-size: 12px; color:grey ">' + Food.des + '</div>';
-            Foodcard += '</ons-col>';
-            Foodcard += '<ons-col width="20%" style="margin-top:8%">฿' + Food.price + '</ons-col>';
-            Foodcard += '<ons-col width="11%" style="margin-left:8px; margin-top:7%">';
-            Foodcard += '<ons-button onclick="buybtn(`' + Food.name + '`,`' + Food.price + '`)" style="background-color: rgb(255, 163, 26); color:white; width: 45px; height: 25px; ">';
-            Foodcard += '<div class="buybtn">+</div></ons-button></ons-col></ons-row>';
-            $('#foodcard').append(Foodcard);
-        }
-    });
-        /////////////////////End of Append Food Menu Card////////////////////////////////////
-
-
+            Menucard += `</ons-col>
+                         </ons-row>
+                         <hr>
+                         <div style="font-size: 16px; margin-top:10px;"><b>Menu</b></div>`;
+            console.log(Menucard);
+            $('#foodcard').append(Menucard);
+        });
+        db.collection("Resturant").doc(ID).collection("Food").get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                Foodcard = `<ons-row><ons-col width="60%">
+             <div style="font-size: 15px; margin-top:10px;">${doc.data().name}</div>
+             <div style="font-size: 12px; color:grey ">${doc.data().des}</div>
+             </ons-col>
+             <ons-col width="20%" style="margin-top:8%">฿${doc.data().price}</ons-col>
+             <ons-col width="11%" style="margin-left:8px; margin-top:7%">
+             <ons-button onclick="buybtn('${doc.data().name}','${doc.data().price}')" style="background-color: rgb(255, 163, 26); color:white; width: 45px; height: 25px; ">
+             <div class="buybtn">+</div></ons-button></ons-col></ons-row>`;
+                $('#foodcard').append(Foodcard);
+            });
+        });
 
     }
+
+
+    /////////////////////End of Append Food Menu Card////////////////////////////////////
+
+
+
+
     if (page.id === "Category") {
         /////////////////////Append Category Card////////////////////////////////////
         db.collection("Category").get().then((querySnapshot) => {
