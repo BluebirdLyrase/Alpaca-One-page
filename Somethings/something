@@ -1,0 +1,54 @@
+
+
+    <!-- begin of bottom topbar -->
+    <ons-toolbar style="height: 55px; background-color: rgb(255, 163, 26);">
+        <div class="center" style=" color:white; font-size: 30px; text-align:center;">Title</div>
+    </ons-toolbar>
+    <!-- End of topbar -->
+
+
+
+
+    <!-- begin of bottom toolbar -->
+    <ons-bottom-toolbar style="height: 55px ;">
+        <ons-row class="AlpacaNavbar">
+            <ons-col width="20%" class="AlpacaNavBlock AlpacaCurrent">
+                <ons-toolbar-button modifier="quiet">
+                    <i class="fas fa-utensils AlpacaNavIcon">
+                        <div class="AlpacaNavText">ใกล้ฉัน</div>
+                    </i>
+                </ons-toolbar-button>
+            </ons-col>
+            <ons-col width="20%" class="AlpacaNavBlock">
+                <ons-toolbar-button modifier="quiet">
+                    <i class="fas fa-heart AlpacaNavIcon">
+                        <div class="AlpacaNavText">เมนูโปรด</div>
+                    </i>
+                </ons-toolbar-button>
+            </ons-col>
+            <ons-col width="20%" class="AlpacaNavBlock">
+                <ons-toolbar-button modifier="quiet">
+                    <i class="fas fa-clipboard AlpacaNavIcon">
+                        <div class="AlpacaNavText">ประเภท</div>
+                    </i>
+                </ons-toolbar-button>
+            </ons-col>
+            <ons-col width="20%" class="AlpacaNavBlock">
+                <ons-toolbar-button modifier="quiet">
+                    <i class="fas fa-star AlpacaNavIcon">
+                        <div class="AlpacaNavText">โปรโมชั่น</div>
+                    </i>
+                </ons-toolbar-button>
+            </ons-col>
+            <ons-col width="20%" class="AlpacaNavBlock">
+                <ons-toolbar-button modifier="quiet">
+                    <i class="fas fa-cog AlpacaNavIcon">
+                        <div class="AlpacaNavText">ตั้งค่า</div>
+                    </i>
+                </ons-toolbar-button>
+            </ons-col>
+        </ons-row>
+    </ons-bottom-toolbar>
+    <!-- End of bottom toolbar -->
+
+

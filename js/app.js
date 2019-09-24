@@ -13,7 +13,7 @@ firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 
 function setIDtoFoodMenu(ID) {
-    console.log("card pressed");
+    // console.log("card pressed");
     localStorage.setItem("selected", ID);
     console.log(ID);
     content.load('Food.html')
@@ -23,6 +23,27 @@ function buybtn(name, price) {
     ons.notification.alert(name + ' (฿' + price + ') ' + 'has been added');
 }
 
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      // User is signed in.
+      var displayName = user.displayName;
+      var email = user.email;
+      console.log(email + " sign in");
+      var emailVerified = user.emailVerified;
+      var photoURL = user.photoURL;
+      var isAnonymous = user.isAnonymous;
+      var uid = user.uid;
+      var providerData = user.providerData;
+      document.querySelector('ons-navigator').resetToPage('splitter.html');
+      // ...
+    } else {
+      document.querySelector('ons-navigator').resetToPage('splitter.html');
+      // User is signed out.
+      // ...
+    }
+  });
+  
+
 document.addEventListener('init', function (event) {
     var page = event.target;
     console.log(page.id);
@@ -30,8 +51,7 @@ document.addEventListener('init', function (event) {
     if (page.id === "tabbar") {
         //Code for tabbar
         $("#menubtn").click(function () {
-            var menu = document.getElementById('menu');
-            menu.open();
+            $("#sidemenu")[0].open();
         });
 
         ///////////////////change tabbar color//////////////////
@@ -70,29 +90,37 @@ document.addEventListener('init', function (event) {
         ///////////////////end of change tabbar color//////////////////
     }
 
-    if (page.id === "sidemenu") {
+    if (page.id === "menu") {
         //Code for sidemenu
         $("#regisbtn").click(function () {
             console.log('regisbtn pressed');
-            var content = document.getElementById('content');
-            var menu = document.getElementById('menu');
-            content.load('regis.html')
-                .then(menu.close.bind(menu));
+            $("#content")[0].load('regis.html')
+            $("#sidemenu")[0].close();
         });
         $("#loginbtn").click(function () {
             console.log('loginbtn pressed');
-            var content = document.getElementById('content');
-            var menu = document.getElementById('menu');
-            content.load('login.html')
-                .then(menu.close.bind(menu));
+            $("#content")[0].load('login.html')
+            $("#sidemenu")[0].close();
+
         });
+        $("#logoutbtn").click(function () {
+            console.log('logoutbtn pressed');
+            $("#sidemenu")[0].close();
+            firebase.auth().signOut().then(function () {
+                // Sign-out successful.
+              }).catch(function (error) {
+                // An error happened.
+              });
+        });
+
 
     }
 
 
     if (page.id === "Resturant") {
-
         db.collection("Resturant").get().then((querySnapshot) => {
+            $('#Resturantcard').empty();
+            $('#Popularcard').empty();
             querySnapshot.forEach((doc) => {
                 /////////////////////Append Resturant Card////////////////////////////////////
 
@@ -114,7 +142,7 @@ document.addEventListener('init', function (event) {
                 else Rescard += '<ons-col width="45%"  style="text-align: right ;color:red;" ><b>Close</b></ons-col>';
 
                 Rescard += '</ons-row></ons-col></ons-row></ons-card>'
-                console.log(Rescard);
+                // console.log(Rescard);
                 $('#Resturantcard').append(Rescard);
                 $('#Popularcard').append(Rescard);
             });
@@ -153,7 +181,7 @@ document.addEventListener('init', function (event) {
                          </ons-row>
                          <hr>
                          <div style="font-size: 16px; margin-top:10px;"><b>Menu</b></div>`;
-            console.log(Menucard);
+            // console.log(Menucard);
             $('#foodcard').append(Menucard);
         });
         db.collection("Resturant").doc(ID).collection("Food").get().then((querySnapshot) => {
@@ -181,6 +209,7 @@ document.addEventListener('init', function (event) {
     if (page.id === "Category") {
         /////////////////////Append Category Card////////////////////////////////////
         db.collection("Category").get().then((querySnapshot) => {
+            $('#categorycard').empty();
             querySnapshot.forEach((doc) => {
                 var Categorycard = `<ons-col width="50%" style="height: 80%;">
                 <ons-card style="width: 90%;height: 90%; text-align: center;">
@@ -201,12 +230,6 @@ document.addEventListener('init', function (event) {
             var username = document.getElementById('username').value;
             var password = document.getElementById('password').value;
 
-            // if (username === 'Admin' && password === '123') {
-            //     document.querySelector('ons-navigator').resetToPage('splitter.html');
-            // } else {
-            //     ons.notification.alert('Incorrect username or password.');
-            // }
-
             firebase.auth().signInWithEmailAndPassword(username, password).catch(function (error) {
                 // Handle Errors here.
                 var errorCode = error.code;
@@ -215,17 +238,34 @@ document.addEventListener('init', function (event) {
                 console.log(errorCode);
                 console.log(errorMessage);
               });
-
+              
         });
 
         $("#facebookbtn").click(function () {
             console.log("facebookbtn pressed");
-            document.querySelector('ons-navigator').resetToPage('splitter.html');
+            document.querySelector('ons-navigator').resetToPage('splitter.html');tabbar.html
         });
 
+        var provider = new firebase.auth.GoogleAuthProvider();
         $("#googlebtn").click(function () {
             console.log("googlebtn pressed");
-            document.querySelector('ons-navigator').resetToPage('splitter.html');
+            firebase.auth().signInWithPopup(provider).then(function (result) {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                var token = result.credential.accessToken;
+                // The signed-in user info.
+                var user = result.user;
+                // ...
+              }).catch(function (error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // The email of the user's account used.
+                var email = error.email;
+                // The firebase.auth.AuthCredential type that was used.
+                var credential = error.credential;
+                // ...
+              });
+              document.querySelector('ons-navigator').resetToPage('splitter.html');
         });
 
         $("#regisbtn2").click(function () {
