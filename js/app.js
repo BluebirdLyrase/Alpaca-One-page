@@ -25,24 +25,24 @@ function buybtn(name, price) {
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-      // User is signed in.
-      var displayName = user.displayName;
-      var email = user.email;
-      console.log(email + " sign in");
-      var emailVerified = user.emailVerified;
-      var photoURL = user.photoURL;
-      var isAnonymous = user.isAnonymous;
-      var uid = user.uid;
-      var providerData = user.providerData;
-      document.querySelector('ons-navigator').resetToPage('splitter.html');
-      // ...
+        // User is signed in.
+        var displayName = user.displayName;
+        var email = user.email;
+        console.log(email + " sign in");
+        var emailVerified = user.emailVerified;
+        var photoURL = user.photoURL;
+        var isAnonymous = user.isAnonymous;
+        var uid = user.uid;
+        var providerData = user.providerData;
+        document.querySelector('ons-navigator').resetToPage('splitter.html');
+        // ...
     } else {
-      document.querySelector('ons-navigator').resetToPage('splitter.html');
-      // User is signed out.
-      // ...
+        document.querySelector('ons-navigator').resetToPage('splitter.html');
+        // User is signed out.
+        // ...
     }
-  });
-  
+});
+
 
 document.addEventListener('init', function (event) {
     var page = event.target;
@@ -108,9 +108,9 @@ document.addEventListener('init', function (event) {
             $("#sidemenu")[0].close();
             firebase.auth().signOut().then(function () {
                 // Sign-out successful.
-              }).catch(function (error) {
+            }).catch(function (error) {
                 // An error happened.
-              });
+            });
         });
 
 
@@ -237,25 +237,28 @@ document.addEventListener('init', function (event) {
                 // ...
                 console.log(errorCode);
                 console.log(errorMessage);
-              });
-              
+            });
+
         });
 
         $("#facebookbtn").click(function () {
             console.log("facebookbtn pressed");
-            document.querySelector('ons-navigator').resetToPage('splitter.html');tabbar.html
+            document.querySelector('ons-navigator').resetToPage('splitter.html'); tabbar.html
         });
 
         var provider = new firebase.auth.GoogleAuthProvider();
         $("#googlebtn").click(function () {
             console.log("googlebtn pressed");
-            firebase.auth().signInWithPopup(provider).then(function (result) {
-                // This gives you a Google Access Token. You can use it to access the Google API.
-                var token = result.credential.accessToken;
+            firebase.auth().signInWithRedirect(provider);
+            firebase.auth().getRedirectResult().then(function (result) {
+                if (result.credential) {
+                    // This gives you a Google Access Token. You can use it to access the Google API.
+                    var token = result.credential.accessToken;
+                    // ...
+                }
                 // The signed-in user info.
                 var user = result.user;
-                // ...
-              }).catch(function (error) {
+            }).catch(function (error) {
                 // Handle Errors here.
                 var errorCode = error.code;
                 var errorMessage = error.message;
@@ -264,31 +267,8 @@ document.addEventListener('init', function (event) {
                 // The firebase.auth.AuthCredential type that was used.
                 var credential = error.credential;
                 // ...
-              });
-              document.querySelector('ons-navigator').resetToPage('splitter.html');
-
-
-              /////use this after deploy////////
-            //     firebase.auth().signInWithRedirect(provider);
-            //     firebase.auth().getRedirectResult().then(function(result) {
-            //         if (result.credential) {
-            //           // This gives you a Google Access Token. You can use it to access the Google API.
-            //           var token = result.credential.accessToken;
-            //           // ...
-            //         }
-            //         // The signed-in user info.
-            //         var user = result.user;
-            //       }).catch(function(error) {
-            //         // Handle Errors here.
-            //         var errorCode = error.code;
-            //         var errorMessage = error.message;
-            //         // The email of the user's account used.
-            //         var email = error.email;
-            //         // The firebase.auth.AuthCredential type that was used.
-            //         var credential = error.credential;
-            //         // ...
-            //       });
-
+            });
+            document.querySelector('ons-navigator').resetToPage('splitter.html');
         });
 
         $("#regisbtn2").click(function () {
