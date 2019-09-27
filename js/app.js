@@ -19,6 +19,13 @@ function setIDtoFoodMenu(ID) {
     content.load('Food.html')
 }
 
+function setSelectedCatagory(Catagory) {
+    // console.log("card pressed");
+    localStorage.setItem("selectedCatagor", Catagory);
+    console.log(Catagory);
+    // content.load('ResturantCat.html')
+}
+
 function buybtn(name, price) {
     ons.notification.alert(name + ' (฿' + price + ') ' + 'has been added');
 }
