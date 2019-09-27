@@ -37,7 +37,6 @@ firebase.auth().onAuthStateChanged(function (user) {
         document.querySelector('ons-navigator').resetToPage('splitter.html');
         // ...
     } else {
-        document.querySelector('ons-navigator').resetToPage('splitter.html');
         // User is signed out.
         // ...
     }
@@ -61,7 +60,7 @@ document.addEventListener('init', function (event) {
             $("#tabbar3").attr("style", "background-color: rgb(255, 163, 26);");
             $("#tabbar4").attr("style", "background-color: rgb(255, 163, 26);");
             $("#title").empty();
-            $("#title").append("Popular");
+            $("#title").append("Recommended");
         });
         $("#tabbar2").click(function () {
             $(this).attr("style", "background-color: rgb(173, 232, 105);");
