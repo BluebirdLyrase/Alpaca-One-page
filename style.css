@@ -1,6 +1,4 @@
 
-
-
 .AlpacaIconText
 {
     font-size: 10px;
@@ -31,3 +29,25 @@
     transform: translateY(-50%); 
     font-size: 40px;
 }
+
+
+
+.recomended_item {
+    padding-left: 10px;
+}
+
+.recomended_item_title {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.thumbnail {
+    width: 150px;
+    height: 150px;
+    display: table;
+}
+
+.recomended_list {
+    height: 170px;
+}
+

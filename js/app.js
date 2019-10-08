@@ -126,7 +126,6 @@ document.addEventListener('init', function (event) {
     if (page.id === "Resturant") {
         db.collection("Resturant").get().then((querySnapshot) => {
             $('#Resturantcard').empty();
-            $('#Popularcard').empty();
             querySnapshot.forEach((doc) => {
                 /////////////////////Append Resturant Card////////////////////////////////////
 
@@ -150,7 +149,6 @@ document.addEventListener('init', function (event) {
                 Rescard += '</ons-row></ons-col></ons-row></ons-card>'
                 // console.log(Rescard);
                 $('#Resturantcard').append(Rescard);
-                $('#Popularcard').append(Rescard);
             });
         });
 
@@ -196,8 +194,8 @@ document.addEventListener('init', function (event) {
              <div style="font-size: 15px; margin-top:10px;">${doc.data().name}</div>
              <div style="font-size: 12px; color:grey ">${doc.data().des}</div>
              </ons-col>
-             <ons-col width="20%" style="margin-top:8%">฿${doc.data().price}</ons-col>
-             <ons-col width="11%" style="margin-left:8px; margin-top:7%">
+             <ons-col width="20%" style="margin-top:5%">฿${doc.data().price}</ons-col>
+             <ons-col width="11%" style="margin-left:8px; margin-top:4%">
              <ons-button onclick="buybtn('${doc.data().name}','${doc.data().price}')" style="background-color: rgb(255, 163, 26); color:white; width: 45px; height: 25px; ">
              <div class="buybtn">+</div></ons-button></ons-col></ons-row>`;
                 $('#foodcard').append(Foodcard);
@@ -210,6 +208,21 @@ document.addEventListener('init', function (event) {
     /////////////////////End of Append Food Menu Card////////////////////////////////////
 
 
+    if (page.id === "Recommended") {
+        console.log("ID = Recommanded");
+        db.collection("Resturant").get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                if (doc.data().status && doc.data().star>=4){
+            var carousel = `<ons-carousel-item modifier="nodivider" id="item1" class="recomended_item" onclick="setIDtoFoodMenu('${doc.id}')">
+            <img  src=${doc.data().img}alt="Onsen UI" class="thumbnail">
+            <div class="recomended_item_title" id="item1_name">${doc.data().name}</div>
+            </ons-carousel-item>`;
+            $('#carousel').append(carousel);
+            $('#Recommended').append(carousel);
+        }
+        });
+        });
+     }
 
 
     if (page.id === "Category") {
@@ -225,6 +238,7 @@ document.addEventListener('init', function (event) {
             </ons-col>`;
                 console.log(doc.id);
                 $('#categorycard').append(Categorycard);
+                $('#Recomcategorycard').append(Categorycard);
             });
         });
         /////////////////////End of Append Category Card////////////////////////////////////
