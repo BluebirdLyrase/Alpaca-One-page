@@ -16,14 +16,13 @@ function setIDtoFoodMenu(ID) {
     // console.log("card pressed");
     localStorage.setItem("selected", ID);
     console.log(ID);
-    content.load('Food.html')
+    $("#content")[0].load('Food.html')
 }
 
 function setSelectedCatagory(Catagory) {
-    // console.log("card pressed");
     localStorage.setItem("selectedCatagor", Catagory);
     console.log(Catagory);
-    // content.load('ResturantCat.html')
+    $("#content")[0].load('content/Result.html')
 }
 
 function buybtn(name, price) {
@@ -41,6 +40,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         var isAnonymous = user.isAnonymous;
         var uid = user.uid;
         var providerData = user.providerData;
+        ons.notification.alert('Successfully Sign-in!');
         document.querySelector('ons-navigator').resetToPage('splitter.html');
         // ...
     } else {
@@ -75,7 +75,7 @@ document.addEventListener('init', function (event) {
             $("#tabbar3").attr("style", "background-color: rgb(255, 163, 26);");
             $("#tabbar4").attr("style", "background-color: rgb(255, 163, 26);");
             $("#title").empty();
-            $("#title").append("Resturant List");
+            $("#title").append("Search for Resturant");
         });
         $("#tabbar3").click(function () {
             $(this).attr("style", "background-color: rgb(173, 232, 105);");
@@ -83,7 +83,7 @@ document.addEventListener('init', function (event) {
             $("#tabbar2").attr("style", "background-color: rgb(255, 163, 26);");
             $("#tabbar4").attr("style", "background-color: rgb(255, 163, 26);");
             $("#title").empty();
-            $("#title").append("Food Category");
+            $("#title").append("Setting");
         });
         $("#tabbar4").click(function () {
             $(this).attr("style", "background-color: rgb(173, 232, 105);");
@@ -123,34 +123,36 @@ document.addEventListener('init', function (event) {
     }
 
 
-    if (page.id === "Resturant") {
-        db.collection("Resturant").get().then((querySnapshot) => {
-            $('#Resturantcard').empty();
-            querySnapshot.forEach((doc) => {
-                /////////////////////Append Resturant Card////////////////////////////////////
+    if (page.id === "Result") {
+        db.collection("Resturant").where("catagory", "==", "Japanese")
+            // .orderBy("star","desc")
+            .get().then((querySnapshot) => {
+                $('#Resturantcard').empty();
+                querySnapshot.forEach((doc) => {
+                    /////////////////////Append Resturant Card////////////////////////////////////
 
-                var Rescard = `<ons-card style="height : auto; margin-top:0px;" onclick="setIDtoFoodMenu('${doc.id}')"><ons-row>
+                    var Rescard = `<ons-card style="height : auto; margin-top:0px;" onclick="setIDtoFoodMenu('${doc.id}')"><ons-row>
                     <ons-col width="25%"><img src=${doc.data().img}} alt="Onsen UI"style="width: 65px; height :55px;"></ons-col>
                     <ons-col width="75%">
                     <div style="font-size: 17px; white-space: nowrap;">&nbsp;&nbsp;<b>${doc.data().name}</b></div>
                     <div style="color:grey">&nbsp;&nbsp;&nbsp;Distance :${doc.data().distance}</div>
                     <ons-row>&nbsp;&nbsp;
                     <ons-col width="50%">` //for starrate
-                for (var i = doc.data().star; i > 0; i--) {
-                    Rescard += '<i class="fas fa-star" style="color: rgb(255, 163, 26)"></i>';
-                }
-                for (var i = (5 - doc.data().star); i > 0; i--) {
-                    Rescard += '<i class="fas fa-star" style="color:grey"></i>';
-                }
-                Rescard += '</ons-col>';
-                if (doc.data().status) Rescard += '<ons-col width="45%"  style="text-align: right ;color:green;" ><b>Open</b></ons-col>';
-                else Rescard += '<ons-col width="45%"  style="text-align: right ;color:red;" ><b>Close</b></ons-col>';
+                    for (var i = doc.data().star; i > 0; i--) {
+                        Rescard += '<i class="fas fa-star" style="color: rgb(255, 163, 26)"></i>';
+                    }
+                    for (var i = (5 - doc.data().star); i > 0; i--) {
+                        Rescard += '<i class="fas fa-star" style="color:grey"></i>';
+                    }
+                    Rescard += '</ons-col>';
+                    if (doc.data().status) Rescard += '<ons-col width="45%"  style="text-align: right ;color:green;" ><b>Open</b></ons-col>';
+                    else Rescard += '<ons-col width="45%"  style="text-align: right ;color:red;" ><b>Close</b></ons-col>';
 
-                Rescard += '</ons-row></ons-col></ons-row></ons-card>'
-                // console.log(Rescard);
-                $('#Resturantcard').append(Rescard);
+                    Rescard += '</ons-row></ons-col></ons-row></ons-card>'
+                    // console.log(Rescard);
+                    $('#Resturantcard').append(Rescard);
+                });
             });
-        });
 
         ///////////////////////End of Append Resturant Card///////////////////////////////////////
 
@@ -212,35 +214,35 @@ document.addEventListener('init', function (event) {
         console.log("ID = Recommanded");
         db.collection("Resturant").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
-                if (doc.data().status && doc.data().star>=4){
-            var carousel = `<ons-carousel-item modifier="nodivider" id="item1" class="recomended_item" onclick="setIDtoFoodMenu('${doc.id}')">
+                if (doc.data().status && doc.data().star >= 4) {
+                    var carousel = `<ons-carousel-item modifier="nodivider" id="item1" class="recomended_item" onclick="setIDtoFoodMenu('${doc.id}')">
             <img  src=${doc.data().img}alt="Onsen UI" class="thumbnail">
             <div class="recomended_item_title" id="item1_name">${doc.data().name}</div>
             </ons-carousel-item>`;
-            $('#carousel').append(carousel);
-            $('#Recommended').append(carousel);
-        }
+                    $('#carousel').append(carousel);
+                    $('#Recommended').append(carousel);
+                }
+            });
         });
-        });
-     }
-
-
-    if (page.id === "Category") {
-        /////////////////////Append Category Card////////////////////////////////////
         db.collection("Category").get().then((querySnapshot) => {
             $('#categorycard').empty();
             querySnapshot.forEach((doc) => {
                 var Categorycard = `<ons-col width="50%" style="height: 80%;">
-                <ons-card style="width: 90%;height: 90%; text-align: center;">
+                <ons-card style="width: 90%;height: 90%; text-align: center;" onclick="setSelectedCatagory('${doc.data().name}')">
                     <img  src=${doc.data().img}alt="Onsen UI" style="width: 100px ; height: 75px;">
                     <div>${doc.data().name}</div>
                 </ons-card>
             </ons-col>`;
                 console.log(doc.id);
-                $('#categorycard').append(Categorycard);
                 $('#Recomcategorycard').append(Categorycard);
             });
         });
+    }
+
+
+    if (page.id === "Category") {
+        /////////////////////Append Category Card////////////////////////////////////
+
         /////////////////////End of Append Category Card////////////////////////////////////
     }
 
@@ -292,15 +294,39 @@ document.addEventListener('init', function (event) {
         });
 
         $("#regisbtn2").click(function () {
-            console.log('regisbtn pressed');
-            content.load('regis.html')
+            // console.log('regisbtn pressed');
+            $("#content")[0].load('regis.html')
         });
     }
 
-    $("#regisNsigninbtn").click(function () {
-        console.log("signinbtn pressed");
-        document.querySelector('ons-navigator').resetToPage('splitter.html');
-    });
+    if (page.id === "Regis") {
+        $("#registerAccountbtn").click(function () {
+            console.log('registerAccountbtn pressed');
+            var username = document.getElementById('Email').value;
+            var password = document.getElementById('password').value;
+            var password2 = document.getElementById('password2').value;
+
+            if (!(username && password && password2)) {
+                ons.notification.alert('You should fill everything');
+            }
+            else if (password.length < 6) {
+                ons.notification.alert('Your password must contains at least 6 characters');
+            }
+            else if (password == password2) {
+                firebase.auth().createUserWithEmailAndPassword(username, password).catch(function (error) {
+                    // Handle Errors here.
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    // ...
+                });
+                ons.notification.alert('Successfully Registered!');
+            }
+            else {
+                ons.notification.alert('both password should be the same :-(');
+            }
+
+        });
+    }
 
 
     $("#backbtn").click(function () {

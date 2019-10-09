@@ -37,6 +37,7 @@
 }
 
 .recomended_item_title {
+    text-align: center;
     font-size: 14px;
     font-weight: bold;
 }
@@ -45,9 +46,11 @@
     width: 150px;
     height: 150px;
     display: table;
+
 }
 
 .recomended_list {
     height: 170px;
+    margin-top: 10px;
 }
 
