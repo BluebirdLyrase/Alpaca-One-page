@@ -16,11 +16,11 @@ function setIDtoFoodMenu(ID) {
     // console.log("card pressed");
     localStorage.setItem("selected", ID);
     console.log(ID);
-    $("#content")[0].load('Food.html')
+    $("#content")[0].load('content/Food.html')
 }
 
 function setSelectedCatagory(Catagory) {
-    localStorage.setItem("selectedCatagor", Catagory);
+    localStorage.setItem("selectedCatagory",Catagory);
     console.log(Catagory);
     $("#content")[0].load('content/Result.html')
 }
@@ -100,12 +100,12 @@ document.addEventListener('init', function (event) {
         //Code for sidemenu
         $("#regisbtn").click(function () {
             console.log('regisbtn pressed');
-            $("#content")[0].load('regis.html')
+            $("#content")[0].load('content/regis.html')
             $("#sidemenu")[0].close();
         });
         $("#loginbtn").click(function () {
             console.log('loginbtn pressed');
-            $("#content")[0].load('login.html')
+            $("#content")[0].load('content/login.html')
             $("#sidemenu")[0].close();
 
         });
@@ -124,7 +124,8 @@ document.addEventListener('init', function (event) {
 
 
     if (page.id === "Result") {
-        db.collection("Resturant").where("catagory", "==", "Japanese")
+        Catagory = localStorage.getItem("selectedCatagory");
+        db.collection("Resturant").where("catagory", "==",Catagory)
             // .orderBy("star","desc")
             .get().then((querySnapshot) => {
                 $('#Resturantcard').empty();
@@ -139,14 +140,14 @@ document.addEventListener('init', function (event) {
                     <ons-row>&nbsp;&nbsp;
                     <ons-col width="50%">` //for starrate
                     for (var i = doc.data().star; i > 0; i--) {
-                        Rescard += '<i class="fas fa-star" style="color: rgb(255, 163, 26)"></i>';
+                        Rescard += '<i class="fas fa-star star"></i>';
                     }
                     for (var i = (5 - doc.data().star); i > 0; i--) {
-                        Rescard += '<i class="fas fa-star" style="color:grey"></i>';
+                        Rescard += '<i class="fas fa-star grey"></i>';
                     }
                     Rescard += '</ons-col>';
-                    if (doc.data().status) Rescard += '<ons-col width="45%"  style="text-align: right ;color:green;" ><b>Open</b></ons-col>';
-                    else Rescard += '<ons-col width="45%"  style="text-align: right ;color:red;" ><b>Close</b></ons-col>';
+                    if (doc.data().status) Rescard += '<ons-col width="45%"  class="open" ><b>Open</b></ons-col>';
+                    else Rescard += '<ons-col width="45%"  class="close" ><b>Close</b></ons-col>';
 
                     Rescard += '</ons-row></ons-col></ons-row></ons-card>'
                     // console.log(Rescard);
@@ -172,15 +173,15 @@ document.addEventListener('init', function (event) {
             <ons-row style = "margin-top:7px;">
             <ons-col width="50%">`
             for (var i = doc.data().star; i > 0; i--) {
-                Menucard += '<i class="fas fa-star" style="color: rgb(255, 163, 26)"></i>';
+                Menucard += '<i class="fas fa-star star"></i>';
             }
             for (var i = (5 - doc.data().star); i > 0; i--) {
-                Menucard += '<i class="fas fa-star" style="color:grey"></i>';
+                Menucard += '<i class="fas fa-star grey"></i>';
             }
             Menucard += '</ons-col>';
 
-            if (doc.data().status) Menucard += '<ons-col width="45%"  style="text-align: right ;color:green;" ><b>Open</b></ons-col>';
-            else Menucard += '<ons-col width="45%"  style="text-align: right ;color:red;" ><b>Close</b></ons-col>';
+            if (doc.data().status) Menucard += '<ons-col width="45%"  class="open" ><b>Open</b></ons-col>';
+            else Menucard += '<ons-col width="45%"  class="close" ><b>Close</b></ons-col>';
 
 
             Menucard += `</ons-col>
@@ -198,7 +199,7 @@ document.addEventListener('init', function (event) {
              </ons-col>
              <ons-col width="20%" style="margin-top:5%">฿${doc.data().price}</ons-col>
              <ons-col width="11%" style="margin-left:8px; margin-top:4%">
-             <ons-button onclick="buybtn('${doc.data().name}','${doc.data().price}')" style="background-color: rgb(255, 163, 26); color:white; width: 45px; height: 25px; ">
+             <ons-button onclick="buybtn('${doc.data().name}','${doc.data().price}')" class="buyBtn">
              <div class="buybtn">+</div></ons-button></ons-col></ons-row>`;
                 $('#foodcard').append(Foodcard);
             });
@@ -240,12 +241,6 @@ document.addEventListener('init', function (event) {
     }
 
 
-    if (page.id === "Category") {
-        /////////////////////Append Category Card////////////////////////////////////
-
-        /////////////////////End of Append Category Card////////////////////////////////////
-    }
-
     if (page.id === "Login") {
         $("#signinbtn").click(function () {
             console.log("signinbtn pressed");
@@ -261,11 +256,6 @@ document.addEventListener('init', function (event) {
                 console.log(errorMessage);
             });
 
-        });
-
-        $("#facebookbtn").click(function () {
-            console.log("facebookbtn pressed");
-            document.querySelector('ons-navigator').resetToPage('splitter.html'); tabbar.html
         });
 
         var provider = new firebase.auth.GoogleAuthProvider();
@@ -295,7 +285,7 @@ document.addEventListener('init', function (event) {
 
         $("#regisbtn2").click(function () {
             // console.log('regisbtn pressed');
-            $("#content")[0].load('regis.html')
+            $("#content")[0].load('content/regis.html')
         });
     }
 
