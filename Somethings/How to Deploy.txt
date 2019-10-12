@@ -1,0 +1,10 @@
+use cmd to cd to file location
+
+
+to install firebase tool use :
+
+npm install -g firebase-tools
+
+firebase login
+
+firebase deploy
