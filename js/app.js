@@ -124,6 +124,7 @@ document.addEventListener('init', function (event) {
 
 
     if (page.id === "Result") {
+        localStorage.setItem("back", "Result.html");
         Catagory = localStorage.getItem("selectedCatagory");
         db.collection("Resturant").where("catagory", "==",Catagory)
             // .orderBy("star","desc")
@@ -212,6 +213,7 @@ document.addEventListener('init', function (event) {
 
 
     if (page.id === "Recommended") {
+        localStorage.setItem("back", "splitter.html");
         console.log("ID = Recommanded");
         db.collection("Resturant").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
@@ -318,10 +320,36 @@ document.addEventListener('init', function (event) {
         });
     }
 
+    if(page.id === "Food"){
+    $("#foodbackbtn").click(function () {
+        Back = localStorage.getItem("back");
+        if(Back=="Result.html"){
+        $("#content")[0].load('content/Result.html')
+        }else{
+        document.querySelector('ons-navigator').resetToPage('splitter.html');
+        }
+    });
+
+    $("#check-outBtn").click(function () {
+        $("#content")[0].load('content/Checkout.html')
+    });
+    }
+
+    if(page.id === "Checkout"){
+        $("#checkoutbackbtn").click(function () {
+            $("#content")[0].load('content/Food.html')
+        });
+    }
+    
+
+
+
 
     $("#backbtn").click(function () {
         document.querySelector('ons-navigator').resetToPage('splitter.html');
     });
+
+
 
 });
 

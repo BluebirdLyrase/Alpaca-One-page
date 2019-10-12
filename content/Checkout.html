@@ -1,0 +1,82 @@
+<ons-page id="Checkout">
+
+    <!-- Toolbar -->
+    <ons-row class="fixed">
+        <ons-toolbar class="Albar">
+            <ons-col width="20%">
+                <!-- Toolbar-button with different icons depending on the platform. -->
+                <ons-toolbar-button id="checkoutbackbtn" class="AlbackBtb">
+                    <i class="fas fa-arrow-left AlpacaIconBig"></i>
+                </ons-toolbar-button>
+            </ons-col>
+            <ons-col width="60%">
+                <div class="Albartext" id="title">Check-out</div>
+            </ons-col>
+            <ons-col width="20%"></ons-col>
+        </ons-toolbar>
+    </ons-row>
+    <!--End of Toolbar -->
+
+    <ons-card style="margin-top: 65px;">
+
+        <div style="text-align:center ">
+            <img src="" alt="Onsen UI" style="width: 200px ; height: auto;"><br>
+            <b style="font-size: 20px;">Sheddo Sishi Cottage</b>
+
+        </div>
+        <hr>
+        <table align="center" width="100%">
+            <tr>
+                <th style="color:grey">Name of Dish</th>
+                <th style="color:grey" align="center">Quantity</th>
+                <th style="color:grey" align="center">Price</th>
+            </tr>
+            <tr>
+                <td>Nigirizushi</td>
+                <td align="center">2</td>
+                <td align="center">฿80</td>
+            </tr>
+            <tr>
+                <td>Gunkanmaki</td>
+                <td align="center">1</td>
+                <td align="center">฿50</td>
+            </tr>
+            <tr>
+                <td>Oshizushi</td>
+                <td align="center">1</td>
+                <td align="center">฿60</td>
+            </tr>
+        </table>
+        <center style="font-size: 20px; margin-top:10px;"><b>Total : </b> ฿190</center>
+        <div style="text-align: center; margin-top: 15px;">
+
+            <p>
+                <ons-input id="Coupon" modifier="underbar" type="text" placeholder="Enter Coupon Here" style="width:70%"
+                    float>
+                </ons-input>
+            </p>
+            Pay via
+            <p style="margin-top: 30px;">
+                <ons-button style="font-size: 20px; background-color: rgb(rgb(73, 96, 199), green, blue); width:70%;"">Credit Card</ons-button>
+                </p>
+    
+                <p style=" margin-top: 8px;">
+                    <ons-button style="font-size: 20px; background-color:rgb(73, 96, 199); width:70%;">Master Card
+                    </ons-button>
+            </p>
+
+            <p style="margin-top: 8px;">
+                <ons-button style="font-size: 20px; background-color: rgb(150, 67, 150); width:70%;">Paypal</ons-button>
+                </ons-row>
+            </p>
+            <p style="margin-top: 8px;">
+                <ons-button style="font-size: 20px; background-color: rgb(255, 163, 26); width:70%;">Cash on Delivery
+                </ons-button>
+                </ons-row>
+            </p>
+
+        </div>
+    </ons-card>
+
+    <div style="height: 60px"></div>
+</ons-page>
