@@ -1,0 +1,253 @@
+[
+    {
+        "name": "Felyne Sushi",
+        "img": "",
+        "distance": 4.22,
+        "status": true,
+        "star": 4,
+        "reviewer": 152,
+        "catagory":"Japanese",
+        "Food": [
+            {
+                "name": "Nigirizushi",
+                "des" : "Serve with Shoyu",
+                "price": "40"
+            },
+            {
+                "name": "Gunkanmaki",
+                "des" : "Serve with Shoyu",
+                "price": "50"
+            },
+            {
+                "name": "Oshizushi",
+                "des" : "Serve with Shoyu",
+                "price": "60"
+            },
+            {
+                "name": "Inarizushi",
+                "des" : "Serve with Shoyu",
+                "price": "40"
+            },
+            {
+                "name": "Makizushi",
+                "des" : "Serve with Shoyu",
+                "price": "20"
+            },
+            {
+                "name": "Chirashizushi",
+                "des" : "Serve with Shoyu",
+                "price": "9999"
+            }
+        ]
+    },
+
+    {
+        "name": "NepNepNep",
+        "img": "",
+        "distance": 10.0,
+        "status": true,
+        "star": 3,
+        "reviewer": 61,
+        "catagory":"Japanese",
+        "Food": [
+            {
+                "name": "Nigirizushi",
+                "des" : "Serve with Shoyu",
+                "price": "40"
+            },
+            {
+                "name": "Gunkanmaki",
+                "des" : "Serve with Shoyu",
+                "price": "50"
+            },
+            {
+                "name": "Oshizushi",
+                "des" : "Serve with Shoyu",
+                "price": "60"
+            },
+            {
+                "name": "Inarizushi",
+                "des" : "Serve with Shoyu",
+                "price": "40"
+            },
+            {
+                "name": "Makizushi",
+                "des" : "Serve with Shoyu",
+                "price": "20"
+            },
+            {
+                "name": "Chirashizushi",
+                "des" : "Serve with Shoyu",
+                "price": "9999"
+            }
+        ]
+    },
+
+    {
+        "name": "Vegeta Capsule",
+        "img": "",
+        "distance": 210.0,
+        "status": true,
+        "star": 5,
+        "reviewer": 183,
+        "catagory":"Japanese",
+        "Food": [
+            {
+                "name": "Nigirizushi",
+                "des" : "Serve with Shoyu",
+                "price": "40"
+            },
+            {
+                "name": "Gunkanmaki",
+                "des" : "Serve with Shoyu",
+                "price": "50"
+            },
+            {
+                "name": "Oshizushi",
+                "des" : "Serve with Shoyu",
+                "price": "60"
+            },
+            {
+                "name": "Inarizushi",
+                "des" : "Serve with Shoyu",
+                "price": "40"
+            },
+            {
+                "name": "Makizushi",
+                "des" : "Serve with Shoyu",
+                "price": "20"
+            },
+            {
+                "name": "Chirashizushi",
+                "des" : "Serve with Shoyu",
+                "price": "9999"
+            }
+        ]
+    },
+    
+    {
+        "name": "Kamehameha",
+        "img": "",
+        "distance": 21.0,
+        "status": false,
+        "star": 2,
+        "reviewer": 13,
+        "catagory":"Japanese",
+        "Food": [
+            {
+                "name": "Nigirizushi",
+                "des" : "Serve with Shoyu",
+                "price": "40"
+            },
+            {
+                "name": "Gunkanmaki",
+                "des" : "Serve with Shoyu",
+                "price": "50"
+            },
+            {
+                "name": "Oshizushi",
+                "des" : "Serve with Shoyu",
+                "price": "60"
+            },
+            {
+                "name": "Inarizushi",
+                "des" : "Serve with Shoyu",
+                "price": "40"
+            },
+            {
+                "name": "Makizushi",
+                "des" : "Serve with Shoyu",
+                "price": "20"
+            },
+            {
+                "name": "Chirashizushi",
+                "des" : "Serve with Shoyu",
+                "price": "9999"
+            }
+        ]
+    },
+
+    {
+        "name": "Masenko",
+        "img": "",
+        "distance": 53,
+        "status": false,
+        "star": 4,
+        "reviewer": 32,
+        "catagory": "Japanese",
+        "Food": [
+            {
+                "name": "Nigirizushi",
+                "des" : "Serve with Shoyu",
+                "price": "40"
+            },
+            {
+                "name": "Gunkanmaki",
+                "des" : "Serve with Shoyu",
+                "price": "50"
+            },
+            {
+                "name": "Oshizushi",
+                "des" : "Serve with Shoyu",
+                "price": "60"
+            },
+            {
+                "name": "Inarizushi",
+                "des" : "Serve with Shoyu",
+                "price": "40"
+            },
+            {
+                "name": "Makizushi",
+                "des" : "Serve with Shoyu",
+                "price": "20"
+            },
+            {
+                "name": "Chirashizushi",
+                "des" : "Serve with Shoyu",
+                "price": "9999"
+            }
+        ]
+    },
+
+    {
+        "name": "Jiren Ultra",
+        "img": "",
+        "distance": 21,
+        "status": false,
+        "star": 1,
+        "reviewer": 41,
+        "catagory": "Japanese",
+        "Food": [
+            {
+                "name": "Nigirizushi",
+                "des" : "Serve with Shoyu",
+                "price": "40"
+            },
+            {
+                "name": "Gunkanmaki",
+                "des" : "Serve with Shoyu",
+                "price": "50"
+            },
+            {
+                "name": "Oshizushi",
+                "des" : "Serve with Shoyu",
+                "price": "60"
+            },
+            {
+                "name": "Inarizushi",
+                "des" : "Serve with Shoyu",
+                "price": "40"
+            },
+            {
+                "name": "Makizushi",
+                "des" : "Serve with Shoyu",
+                "price": "20"
+            },
+            {
+                "name": "Chirashizushi",
+                "des" : "Serve with Shoyu",
+                "price": "9999"
+            }
+        ]
+    }
+]

@@ -136,7 +136,7 @@ document.addEventListener('init', function (event) {
                     <ons-col width="25%"><img src=${doc.data().img}} alt="Onsen UI"style="width: 65px; height :55px;"></ons-col>
                     <ons-col width="75%">
                     <div style="font-size: 17px; white-space: nowrap;">&nbsp;&nbsp;<b>${doc.data().name}</b></div>
-                    <div style="color:grey">&nbsp;&nbsp;&nbsp;Distance :${doc.data().distance}</div>
+                    <div style="color:grey">&nbsp;&nbsp;&nbsp;Distance : ${doc.data().distance}  km</div>
                     <ons-row>&nbsp;&nbsp;
                     <ons-col width="50%">` //for starrate
                     for (var i = doc.data().star; i > 0; i--) {
@@ -169,7 +169,7 @@ document.addEventListener('init', function (event) {
             <img src=${doc.data().img} alt="Onsen UI"style="width: 80%; height :auto; text-align: center">
             </div>
             <div style="font-size: 17px; margin-top:10px;"><b${doc.data().name}</b></div>
-            <div style="color:grey">Distance :${doc.data().distance}</div>
+            <div style="color:grey">Distance : ${doc.data().distance} km</div>
             <ons-row style = "margin-top:7px;">
             <ons-col width="50%">`
             for (var i = doc.data().star; i > 0; i--) {
