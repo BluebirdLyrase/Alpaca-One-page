@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-firestore.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyC2pyNOOA-f53D-UCcoGQPJECnEc5SLC6g",
+            authDomain: "alpaca-one-page.firebaseapp.com",
+            databaseURL: "https://alpaca-one-page.firebaseio.com",
+            projectId: "alpaca-one-page",
+            storageBucket: "alpaca-one-page.appspot.com",
+            messagingSenderId: "598311265035",
+            appId: "1:598311265035:web:602895d35ecefd48b8f80e"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+
+
+        db.collection("Resturant").doc("1001").set({
+            id: "1001",
+            name: "Felyne Sushi",
+            img: "https://firebasestorage.googleapis.com/v0/b/alpaca-one-page.appspot.com/o/jp-Felyne%20Sushi.jpg?alt=media&token=2055bf4f-e3c2-4c84-b385-2ae175398465",
+            distance: 4.22,
+            status: true,
+            star: 4,
+            reviewer: 152,
+            catagory: "Japanese"
+        })
+        db.collection("Resturant").doc("1001").collection('Food').add({
+            name: "Oshizushi",
+            des: "Serve with Shoyu",
+            price: "60"
+        })
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
