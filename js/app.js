@@ -41,7 +41,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         var uid = user.uid;
         var providerData = user.providerData;
         ons.notification.alert('Successfully Sign-in!');
-        document.querySelector('ons-navigator').resetToPage('splitter.html');
+        // document.querySelector('ons-navigator').resetToPage('splitter.html');
         // ...
     } else {
         // User is signed out.
