@@ -111,6 +111,12 @@
     font-size: 40px;
 }
 
+.deletebtn{
+    text-align: center;
+    color: red;
+    font-size: 20px;
+}
+
 
 
 .recomended_item {

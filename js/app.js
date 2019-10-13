@@ -1,4 +1,8 @@
 // Your web app's Firebase configuration
+var item = [];
+var Resname = "";
+var ResPic = "";
+
 var firebaseConfig = {
     apiKey: "AIzaSyC2pyNOOA-f53D-UCcoGQPJECnEc5SLC6g",
     authDomain: "alpaca-one-page.firebaseapp.com",
@@ -20,12 +24,19 @@ function setIDtoFoodMenu(ID) {
 }
 
 function setSelectedCatagory(Catagory) {
-    localStorage.setItem("selectedCatagory",Catagory);
+    localStorage.setItem("selectedCatagory", Catagory);
     console.log(Catagory);
     $("#content")[0].load('content/Result.html')
 }
 
+function deletebtn(index) {
+    item.splice(index, 1)
+    $("#content")[0].load('content/Checkout.html')
+}
+
 function buybtn(name, price) {
+    item.push([name, price]);
+    console.log(item);
     ons.notification.alert(name + ' (฿' + price + ') ' + 'has been added');
 }
 
@@ -126,7 +137,7 @@ document.addEventListener('init', function (event) {
     if (page.id === "Result") {
         localStorage.setItem("back", "Result.html");
         Catagory = localStorage.getItem("selectedCatagory");
-        db.collection("Resturant").where("catagory", "==",Catagory)
+        db.collection("Resturant").where("catagory", "==", Catagory)
             // .orderBy("star","desc")
             .get().then((querySnapshot) => {
                 $('#Resturantcard').empty();
@@ -165,7 +176,8 @@ document.addEventListener('init', function (event) {
         ID = localStorage.getItem("selected");
         /////////////////////Append Food Menu Card////////////////////////////////////
         db.collection("Resturant").doc(ID).get().then(function (doc) {
-
+            Resname = doc.data().name;
+            ResPic = doc.data().img;
             var Menucard = `<div style="text-align: center">
             <img src=${doc.data().img} alt="Onsen UI"style="width: 80%; height :auto; text-align: center">
             </div>
@@ -200,21 +212,35 @@ document.addEventListener('init', function (event) {
              </ons-col>
              <ons-col width="20%" style="margin-top:5%">฿${doc.data().price}</ons-col>
              <ons-col width="11%" style="margin-left:8px; margin-top:4%">
-             <ons-button onclick="buybtn('${doc.data().name}','${doc.data().price}')" class="buyBtn">
+             <ons-button onclick="buybtn('${doc.data().name}',${doc.data().price})" class="buyBtn">
              <div class="buybtn">+</div></ons-button></ons-col></ons-row>`;
                 $('#foodcard').append(Foodcard);
             });
         });
 
+        /////////////////////End of Append Food Menu Card////////////////////////////////////
+
+        $("#foodbackbtn").click(function () {
+            item = [];
+            Back = localStorage.getItem("back");
+            if (Back == "Result.html") {
+                $("#content")[0].load('content/Result.html')
+            } else {
+                document.querySelector('ons-navigator').resetToPage('splitter.html');
+            }
+        });
+
+        $("#check-outBtn").click(function () {
+            $("#content")[0].load('content/Checkout.html')
+        });
+
     }
 
 
-    /////////////////////End of Append Food Menu Card////////////////////////////////////
 
 
     if (page.id === "Recommended") {
         localStorage.setItem("back", "splitter.html");
-        console.log("ID = Recommanded");
         db.collection("Resturant").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 if (doc.data().status && doc.data().star >= 4) {
@@ -320,27 +346,29 @@ document.addEventListener('init', function (event) {
         });
     }
 
-    if(page.id === "Food"){
-    $("#foodbackbtn").click(function () {
-        Back = localStorage.getItem("back");
-        if(Back=="Result.html"){
-        $("#content")[0].load('content/Result.html')
-        }else{
-        document.querySelector('ons-navigator').resetToPage('splitter.html');
-        }
-    });
+    if (page.id === "Checkout") {
+        $("#Resname").append(Resname);
+        $("#ResPic").attr('src', ResPic);
+        var total = 0;
+        item.forEach((item, index) => {
+            var cotable = `<tr>              
+            <td>${item[0]}</td>
+            <td align="center">${item[1]}</td>
+            <td>
+            <div class="deletebtn" onclick="deletebtn(${index})">x</div>
+            </td>
+            </tr>`;
+            $("#Check-outTable").append(cotable);
+            total = total + item[1];
+        });
+        $("#total").append('<b>Total : </b> ฿ ' + total);
 
-    $("#check-outBtn").click(function () {
-        $("#content")[0].load('content/Checkout.html')
-    });
-    }
-
-    if(page.id === "Checkout"){
         $("#checkoutbackbtn").click(function () {
             $("#content")[0].load('content/Food.html')
         });
+
     }
-    
+
 
 
 
