@@ -31,13 +31,22 @@ function setSelectedCatagory(Catagory) {
 
 function deletebtn(index) {
     item.splice(index, 1)
-    $("#content")[0].load('content/Checkout.html')
+    $("#content")[0].load('content/Order.html')
 }
 
 function buybtn(name, price) {
+    var user = firebase.auth().currentUser;
+    if(!user){
+    ons.notification.alert('Please Sign-in! before place order');
+    }else{
     item.push([name, price]);
     console.log(item);
     ons.notification.alert(name + ' (฿' + price + ') ' + 'has been added');
+    if(item.length!=0){
+        $("#orderNoti").empty();
+        $("#orderNoti").append(item.length);
+        }
+    }
 }
 
 firebase.auth().onAuthStateChanged(function (user) {
@@ -213,7 +222,7 @@ document.addEventListener('init', function (event) {
              <ons-col width="20%" style="margin-top:5%">฿${doc.data().price}</ons-col>
              <ons-col width="11%" style="margin-left:8px; margin-top:4%">
              <ons-button onclick="buybtn('${doc.data().name}',${doc.data().price})" class="buyBtn">
-             <div class="buybtn">+</div></ons-button></ons-col></ons-row>`;
+             <div class="buyBtntext">+</div></ons-button></ons-col></ons-row>`;
                 $('#foodcard').append(Foodcard);
             });
         });
@@ -230,10 +239,18 @@ document.addEventListener('init', function (event) {
             }
         });
 
-        $("#check-outBtn").click(function () {
-            $("#content")[0].load('content/Checkout.html')
+        $("#orderBtn").click(function () {
+            var user = firebase.auth().currentUser;
+            if(!user){
+            ons.notification.alert('Please Sign-in! before place order');
+            }else{
+            $("#content")[0].load('content/Order.html')
+            }
         });
-
+        if(item.length!=0){
+        $("#orderNoti").empty();
+        $("#orderNoti").append(item.length);
+        }
     }
 
 
@@ -346,24 +363,24 @@ document.addEventListener('init', function (event) {
         });
     }
 
-    if (page.id === "Checkout") {
+    if (page.id === "Order") {
         $("#Resname").append(Resname);
         $("#ResPic").attr('src', ResPic);
         var total = 0;
         item.forEach((item, index) => {
-            var cotable = `<tr>              
-            <td>${item[0]}</td>
-            <td align="center">${item[1]}</td>
+            var orderTable = `<tr>              
+            <td style="color:grey">${item[0]}</td>
+            <td align="center" style="color:grey">${item[1]}</td>
             <td>
             <div class="deletebtn" onclick="deletebtn(${index})">x</div>
             </td>
             </tr>`;
-            $("#Check-outTable").append(cotable);
+            $("#orderTable").append(orderTable);
             total = total + item[1];
         });
         $("#total").append('<b>Total : </b> ฿ ' + total);
 
-        $("#checkoutbackbtn").click(function () {
+        $("#orderbackbtn").click(function () {
             $("#content")[0].load('content/Food.html')
         });
 

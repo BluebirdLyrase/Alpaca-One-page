@@ -3,14 +3,31 @@
     -webkit-backface-visibility: hidden;
     /*--^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Need to test in real mobile device*/
   }
+  @media not screen and (min-device-width:320px) and (max-device-width:375px) 
+  and (max-device-width:414px) and (max-device-width:675px){
+    .absolute{
+        position:  absolute;
+    }
+    .orderNoti{
+        left:50px;
+      }
+  } 
+.orderText{
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+  }
 
-.check-outBtn{
+.orderBtn{
     background-color: rgb(255, 163, 26); 
     width:95%;
-    text-align: center;
     font-size: 25px;
     color:white;
 }
+
+
 
 .buyBtn{
     background-color: rgb(255, 163, 26); 
@@ -101,7 +118,7 @@
     color:white;
 }
 
-.buybtn{
+.buyBtntext{
     margin: 0;
     position: absolute;
     top: 50%;
@@ -116,8 +133,6 @@
     color: red;
     font-size: 20px;
 }
-
-
 
 .recomended_item {
     padding-left: 10px;
@@ -139,5 +154,29 @@
 .recomended_list {
     height: 170px;
     margin-top: 10px;
+}
+
+.creditbtn{
+    font-size: 20px; 
+    background-color: rgb(73, 96, 199); 
+    width:70%;
+}
+
+.masterbtn{
+    font-size: 20px; 
+    background-color: rgb(71, 146, 245); 
+    width:70%;
+}
+
+.paypalbtn{
+    font-size: 20px; 
+    background-color: rgb(150, 67, 150);
+    width:70%;
+}
+
+.codbtn{
+    font-size: 20px; 
+    background-color: rgb(255, 163, 26);
+    width:70%;
 }
 
