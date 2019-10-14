@@ -2,7 +2,8 @@
 var item = [];
 var Resname = "";
 var ResPic = "";
-
+var ResStatus = false;
+var myNavigator = document.getElementById('myNavigator');
 var firebaseConfig = {
     apiKey: "AIzaSyC2pyNOOA-f53D-UCcoGQPJECnEc5SLC6g",
     authDomain: "alpaca-one-page.firebaseapp.com",
@@ -35,10 +36,11 @@ function deletebtn(index) {
 }
 
 function buybtn(name, price) {
+    console.log(ResStatus);
     var user = firebase.auth().currentUser;
     if(!user){
     ons.notification.alert('Please Sign-in! before place order');
-    }else{
+    }else if(ResStatus){
     item.push([name, price]);
     console.log(item);
     ons.notification.alert(name + ' (฿' + price + ') ' + 'has been added');
@@ -46,6 +48,8 @@ function buybtn(name, price) {
         $("#orderNoti").empty();
         $("#orderNoti").append(item.length);
         }
+    }else{
+    ons.notification.alert('This Resturant is close');
     }
 }
 
@@ -152,7 +156,6 @@ document.addEventListener('init', function (event) {
                 $('#Resturantcard').empty();
                 querySnapshot.forEach((doc) => {
                     /////////////////////Append Resturant Card////////////////////////////////////
-
                     var Rescard = `<ons-card style="height : auto; margin-top:0px;" onclick="setIDtoFoodMenu('${doc.id}')"><ons-row>
                     <ons-col width="25%"><img src=${doc.data().img}} alt="Onsen UI"style="width: 65px; height :55px;"></ons-col>
                     <ons-col width="75%">
@@ -185,12 +188,13 @@ document.addEventListener('init', function (event) {
         ID = localStorage.getItem("selected");
         /////////////////////Append Food Menu Card////////////////////////////////////
         db.collection("Resturant").doc(ID).get().then(function (doc) {
+            ResStatus = doc.data().status;
             Resname = doc.data().name;
             ResPic = doc.data().img;
             var Menucard = `<div style="text-align: center">
+            <div style="font-size: 18px; margin-bottom:5px; text-align: center;"><b>${doc.data().name}</b></div>
             <img src=${doc.data().img} alt="Onsen UI"style="width: 80%; height :auto; text-align: center">
             </div>
-            <div style="font-size: 17px; margin-top:10px;"><b${doc.data().name}</b></div>
             <div style="color:grey">Distance : ${doc.data().distance} km</div>
             <ons-row style = "margin-top:7px;">
             <ons-col width="50%">`
@@ -243,8 +247,10 @@ document.addEventListener('init', function (event) {
             var user = firebase.auth().currentUser;
             if(!user){
             ons.notification.alert('Please Sign-in! before place order');
-            }else{
+            }else if(ResStatus){
             $("#content")[0].load('content/Order.html')
+            }else{
+            ons.notification.alert('This Resturant is close');
             }
         });
         if(item.length!=0){

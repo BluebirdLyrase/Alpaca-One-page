@@ -1,0 +1,347 @@
+[
+    {
+    "id":"2001",
+    "name": "JJJ Resturant",
+    "img": "https://firebasestorage.googleapis.com/v0/b/alpaca-one-page.appspot.com/o/J.jpg?alt=media&token=e964b72e-3cb8-4a7b-90fe-6fe59d6a6d51",
+    "distance": 21.15,
+    "status": true,
+    "star": 4,
+    "reviewer": 56,
+    "catagory": "Vegetarian",
+    "Food": [
+        {
+            "name": "Tofu",
+            "des" : "",
+            "price": "40"
+        },
+        {
+            "name": "Taco",
+            "des" : "",
+            "price": "50"
+        },
+        {
+            "name": "Salad",
+            "des" : "all organic",
+            "price": "60"
+        },
+        {
+            "name": "Miracle Noodle",
+            "des" : "No meat",
+            "price": "40"
+        },
+        {
+            "name": "Veggie Burger",
+            "des" : "fake meat",
+            "price": "20"
+        },
+        {
+            "name": "Raw plant",
+            "des" : "can regrow itself",
+            "price": "52"
+        }
+    ]
+},
+
+{
+    "id":"2002",
+    "name": "Maticus",
+    "img": "https://firebasestorage.googleapis.com/v0/b/alpaca-one-page.appspot.com/o/vg-Maticus.png?alt=media&token=19adbeb8-f4ed-4866-9500-3e8cefb7f97a",
+    "distance": 120 ,
+    "status": true ,
+    "star": 5,
+    "reviewer": 652,
+    "catagory": "Vegetarian",
+    "Food": [
+        {
+            "name": "Tofu",
+            "des" : "",
+            "price": "40"
+        },
+        {
+            "name": "Taco",
+            "des" : "",
+            "price": "50"
+        },
+        {
+            "name": "Salad",
+            "des" : "all organic",
+            "price": "60"
+        },
+        {
+            "name": "Miracle Noodle",
+            "des" : "No meat",
+            "price": "40"
+        },
+        {
+            "name": "Veggie Burger",
+            "des" : "fake meat",
+            "price": "20"
+        },
+        {
+            "name": "Raw plant",
+            "des" : "can regrow itself",
+            "price": "52"
+        }
+    ]
+},
+
+{
+    "id":"2003",
+    "name": "Resto",
+    "img": "https://firebasestorage.googleapis.com/v0/b/alpaca-one-page.appspot.com/o/vg-Resto.jpg?alt=media&token=39eed7ff-aa46-4ca2-b837-4609cc698388",
+    "distance": 27,
+    "status": true,
+    "star": 2,
+    "reviewer": 32,
+    "catagory": "Vegetarian",
+    "Food": [
+        {
+            "name": "Tofu",
+            "des" : "",
+            "price": "40"
+        },
+        {
+            "name": "Taco",
+            "des" : "",
+            "price": "50"
+        },
+        {
+            "name": "Salad",
+            "des" : "all organic",
+            "price": "60"
+        },
+        {
+            "name": "Miracle Noodle",
+            "des" : "No meat",
+            "price": "40"
+        },
+        {
+            "name": "Veggie Burger",
+            "des" : "fake meat",
+            "price": "20"
+        },
+        {
+            "name": "Raw plant",
+            "des" : "can regrow itself",
+            "price": "52"
+        }
+    ]
+},
+
+{
+    "id":"2004",
+    "name": "SpookyB",
+    "img": "https://firebasestorage.googleapis.com/v0/b/alpaca-one-page.appspot.com/o/vg-SpookyB.jpg?alt=media&token=1dc7cb45-59ea-4476-bafd-f685b85afcde",
+    "distance": 32,
+    "status": false,
+    "star": 1,
+    "reviewer": 2,
+    "catagory": "Vegetarian",
+    "Food": [
+        {
+            "name": "Tofu",
+            "des" : "",
+            "price": "40"
+        },
+        {
+            "name": "Taco",
+            "des" : "",
+            "price": "50"
+        },
+        {
+            "name": "Salad",
+            "des" : "all organic",
+            "price": "60"
+        },
+        {
+            "name": "Miracle Noodle",
+            "des" : "No meat",
+            "price": "40"
+        },
+        {
+            "name": "Veggie Burger",
+            "des" : "fake meat",
+            "price": "20"
+        },
+        {
+            "name": "Raw plant",
+            "des" : "can regrow itself",
+            "price": "52"
+        }
+    ]
+},
+
+{
+    "id":"2005",
+    "name": "Veggie",
+    "img": "https://firebasestorage.googleapis.com/v0/b/alpaca-one-page.appspot.com/o/vg-Veggie.jpg?alt=media&token=394adf51-42ab-43cd-96af-6a7866139760",
+    "distance": 8,
+    "status": false,
+    "star": 3,
+    "reviewer": 81,
+    "catagory": "Vegetarian",
+    "Food": [
+        {
+            "name": "Tofu",
+            "des" : "",
+            "price": "40"
+        },
+        {
+            "name": "Taco",
+            "des" : "",
+            "price": "50"
+        },
+        {
+            "name": "Salad",
+            "des" : "all organic",
+            "price": "60"
+        },
+        {
+            "name": "Miracle Noodle",
+            "des" : "No meat",
+            "price": "40"
+        },
+        {
+            "name": "Veggie Burger",
+            "des" : "fake meat",
+            "price": "20"
+        },
+        {
+            "name": "Raw plant",
+            "des" : "can regrow itself",
+            "price": "52"
+        }
+    ]
+},
+
+{
+    "id":"2006",
+    "name": "Entirely",
+    "img": "https://firebasestorage.googleapis.com/v0/b/alpaca-one-page.appspot.com/o/vg-Entirely.jpg?alt=media&token=a210b01c-89c5-440e-8fb0-b028ee867126",
+    "distance": 45,
+    "status": true,
+    "star": 3,
+    "reviewer": 21,
+    "catagory": "Vegetarian",
+    "Food": [
+        {
+            "name": "Tofu",
+            "des" : "",
+            "price": "40"
+        },
+        {
+            "name": "Taco",
+            "des" : "",
+            "price": "50"
+        },
+        {
+            "name": "Salad",
+            "des" : "all organic",
+            "price": "60"
+        },
+        {
+            "name": "Miracle Noodle",
+            "des" : "No meat",
+            "price": "40"
+        },
+        {
+            "name": "Veggie Burger",
+            "des" : "fake meat",
+            "price": "20"
+        },
+        {
+            "name": "Raw plant",
+            "des" : "can regrow itself",
+            "price": "52"
+        }
+    ]
+},
+
+{
+    "id":"2007",
+    "name": "Company",
+    "img": "https://firebasestorage.googleapis.com/v0/b/alpaca-one-page.appspot.com/o/vg-Company.jpg?alt=media&token=082dd589-cc80-4b31-ab63-86f364da3ade",
+    "distance": 21,
+    "status": false,
+    "star": 2,
+    "reviewer": 6,
+    "catagory": "Vegetarian",
+    "Food": [
+        {
+            "name": "Tofu",
+            "des" : "",
+            "price": "40"
+        },
+        {
+            "name": "Taco",
+            "des" : "",
+            "price": "50"
+        },
+        {
+            "name": "Salad",
+            "des" : "all organic",
+            "price": "60"
+        },
+        {
+            "name": "Miracle Noodle",
+            "des" : "No meat",
+            "price": "40"
+        },
+        {
+            "name": "Veggie Burger",
+            "des" : "fake meat",
+            "price": "20"
+        },
+        {
+            "name": "Raw plant",
+            "des" : "can regrow itself",
+            "price": "52"
+        }
+    ]
+},
+
+{
+    "id":"2008",
+    "name": "Chaster",
+    "img": "https://firebasestorage.googleapis.com/v0/b/alpaca-one-page.appspot.com/o/vg-Chaster.jpg?alt=media&token=8574e857-d09b-4790-9463-7462836309ed",
+    "distance": 41,
+    "status": true,
+    "star": 4,
+    "reviewer": 124,
+    "catagory": "Vegetarian",
+    "Food": [
+        {
+            "name": "Tofu",
+            "des" : "",
+            "price": "40"
+        },
+        {
+            "name": "Taco",
+            "des" : "",
+            "price": "50"
+        },
+        {
+            "name": "Salad",
+            "des" : "all organic",
+            "price": "60"
+        },
+        {
+            "name": "Miracle Noodle",
+            "des" : "No meat",
+            "price": "40"
+        },
+        {
+            "name": "Veggie Burger",
+            "des" : "fake meat",
+            "price": "20"
+        },
+        {
+            "name": "Raw plant",
+            "des" : "can regrow itself",
+            "price": "52"
+        }
+    ]
+}
+
+
+]

@@ -1,0 +1,302 @@
+[
+    {
+    "id":"4001",
+    "name": "Burger King",
+    "img": "https://firebasestorage.googleapis.com/v0/b/alpaca-one-page.appspot.com/o/FastFood%2FBurger%20King.png?alt=media&token=50c1b618-cd15-4475-8227-41e5cf31bd5d",
+    "distance": 125,
+    "status":true,
+    "star": 3,
+    "reviewer": 120,
+    "catagory": "Fastfood",
+    "Food": [
+        {
+            "name": "Sandwich",
+            "des" : "",
+            "price": "40"
+        },
+        {
+            "name": "Hamburger",
+            "des" : "",
+            "price": "50"
+        },
+        {
+            "name": "franch fires",
+            "des" : "chip",
+            "price": "60"
+        },
+        {
+            "name": "Ice Cream",
+            "des" : "No meat",
+            "price": "40"
+        },
+        {
+            "name": "Hot Dog",
+            "des" : "It is not a real Dog",
+            "price": "20"
+        },
+        {
+            "name": "Tacos",
+            "des" : "For the MAXICAN folk",
+            "price": "52"
+        }
+    ]
+},
+
+{
+    "id":"4002",
+    "name": "Dunkin Donuts",
+    "img": "https://firebasestorage.googleapis.com/v0/b/alpaca-one-page.appspot.com/o/FastFood%2FDunkin%20Donuts.jpg?alt=media&token=be44f6ad-b98b-4666-b046-857e34f7cf9d",
+    "distance": 34,
+    "status":true,
+    "star": 2,
+    "reviewer": 120,
+    "catagory": "Fastfood",
+    "Food": [
+        {
+            "name": "Sandwich",
+            "des" : "",
+            "price": "40"
+        },
+        {
+            "name": "Hamburger",
+            "des" : "",
+            "price": "50"
+        },
+        {
+            "name": "franch fires",
+            "des" : "chip",
+            "price": "60"
+        },
+        {
+            "name": "Ice Cream",
+            "des" : "No meat",
+            "price": "40"
+        },
+        {
+            "name": "Hot Dog",
+            "des" : "It is not a real Dog",
+            "price": "20"
+        },
+        {
+            "name": "Tacos",
+            "des" : "For the MAXICAN folk",
+            "price": "52"
+        }
+    ]
+},
+
+{
+    "id":"4003",
+    "name": "KFC",
+    "img": "https://firebasestorage.googleapis.com/v0/b/alpaca-one-page.appspot.com/o/FastFood%2FKFC.png?alt=media&token=b6212b20-481e-49d2-9456-775693286c3f",
+    "distance": 41,
+    "status": false,
+    "star": 3,
+    "reviewer": 35,
+    "catagory": "Fastfood",
+    "Food": [
+        {
+            "name": "Sandwich",
+            "des" : "",
+            "price": "40"
+        },
+        {
+            "name": "Hamburger",
+            "des" : "",
+            "price": "50"
+        },
+        {
+            "name": "franch fires",
+            "des" : "chip",
+            "price": "60"
+        },
+        {
+            "name": "Ice Cream",
+            "des" : "No meat",
+            "price": "40"
+        },
+        {
+            "name": "Hot Dog",
+            "des" : "It is not a real Dog",
+            "price": "20"
+        },
+        {
+            "name": "Tacos",
+            "des" : "For the MAXICAN folk",
+            "price": "52"
+        }
+    ]
+},
+
+{
+    "id":"4004",
+    "name": "McDonald",
+    "img": "https://firebasestorage.googleapis.com/v0/b/alpaca-one-page.appspot.com/o/FastFood%2FMcDonald.png?alt=media&token=94c44596-9d2a-4519-9bb9-424b2a8c0e05",
+    "distance": 4,
+    "status":true,
+    "star": 4,
+    "reviewer": 1451,
+    "catagory": "Fastfood",
+    "Food": [
+        {
+            "name": "Sandwich",
+            "des" : "",
+            "price": "40"
+        },
+        {
+            "name": "Hamburger",
+            "des" : "",
+            "price": "50"
+        },
+        {
+            "name": "franch fires",
+            "des" : "chip",
+            "price": "60"
+        },
+        {
+            "name": "Ice Cream",
+            "des" : "No meat",
+            "price": "40"
+        },
+        {
+            "name": "Hot Dog",
+            "des" : "It is not a real Dog",
+            "price": "20"
+        },
+        {
+            "name": "Tacos",
+            "des" : "For the MAXICAN folk",
+            "price": "52"
+        }
+    ]
+},
+
+{
+    "id":"4005",
+    "name": "Real Wendy",
+    "img": "https://firebasestorage.googleapis.com/v0/b/alpaca-one-page.appspot.com/o/FastFood%2FReal%20Wendy.jpg?alt=media&token=718e7087-1c7e-4828-b6e0-aa069bfcc6df",
+    "distance": 1,
+    "status": true,
+    "star": 5,
+    "reviewer": 9999,
+    "catagory": "Fastfood",
+    "Food": [
+        {
+            "name": "Sandwich",
+            "des" : "",
+            "price": "40"
+        },
+        {
+            "name": "Hamburger",
+            "des" : "",
+            "price": "50"
+        },
+        {
+            "name": "franch fires",
+            "des" : "chip",
+            "price": "60"
+        },
+        {
+            "name": "Ice Cream",
+            "des" : "No meat",
+            "price": "40"
+        },
+        {
+            "name": "Hot Dog",
+            "des" : "It is not a real Dog",
+            "price": "20"
+        },
+        {
+            "name": "Tacos",
+            "des" : "For the MAXICAN folk",
+            "price": "52"
+        }
+    ]
+},
+
+{
+    "id":"4006",
+    "name": "Subway",
+    "img": "https://firebasestorage.googleapis.com/v0/b/alpaca-one-page.appspot.com/o/FastFood%2Fsubway.jpg?alt=media&token=37e46fc3-6803-490d-b638-59efbf411c91",
+    "distance": 10,
+    "status": false,
+    "star": 2,
+    "reviewer": 4,
+    "catagory": "Fastfood",
+    "Food": [
+        {
+            "name": "Sandwich",
+            "des" : "",
+            "price": "40"
+        },
+        {
+            "name": "Hamburger",
+            "des" : "",
+            "price": "50"
+        },
+        {
+            "name": "franch fires",
+            "des" : "chip",
+            "price": "60"
+        },
+        {
+            "name": "Ice Cream",
+            "des" : "No meat",
+            "price": "40"
+        },
+        {
+            "name": "Hot Dog",
+            "des" : "It is not a real Dog",
+            "price": "20"
+        },
+        {
+            "name": "Tacos",
+            "des" : "For the MAXICAN folk",
+            "price": "52"
+        }
+    ]
+},
+
+{
+    "id":"4007",
+    "name": "Wendy",
+    "img": "https://firebasestorage.googleapis.com/v0/b/alpaca-one-page.appspot.com/o/FastFood%2FWendy.png?alt=media&token=e9a91459-c5ab-4d55-b566-6d1bbc4c8db0",
+    "distance": 12,
+    "status":false,
+    "star": 4,
+    "reviewer": 21,
+    "catagory": "Fastfood",
+    "Food": [
+        {
+            "name": "Sandwich",
+            "des" : "",
+            "price": "40"
+        },
+        {
+            "name": "Hamburger",
+            "des" : "",
+            "price": "50"
+        },
+        {
+            "name": "franch fires",
+            "des" : "chip",
+            "price": "60"
+        },
+        {
+            "name": "Ice Cream",
+            "des" : "No meat",
+            "price": "40"
+        },
+        {
+            "name": "Hot Dog",
+            "des" : "It is not a real Dog",
+            "price": "20"
+        },
+        {
+            "name": "Tacos",
+            "des" : "For the MAXICAN folk",
+            "price": "52"
+        }
+    ]
+}
+]
