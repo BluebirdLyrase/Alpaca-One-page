@@ -1,0 +1,229 @@
+[
+    {
+    "id":"5001",
+    "name": "Blaze Pizza",
+    "img": "https://firebasestorage.googleapis.com/v0/b/alpaca-one-page.appspot.com/o/Pizza%2FBlaze%20Pizza.jpg?alt=media&token=cf83c7e3-24fa-477f-b3fc-813ac49403e8",
+    "distance": 41,
+    "status": false,
+    "star": 3,
+    "reviewer": 471,
+    "catagory": "Pizza",
+    "Food": [
+        {
+            "name": "Hawaiian",
+            "des" : "Searve with Origano",
+            "price": "40"
+        },
+        {
+            "name": "Seafood Deluxe",
+            "des" : "Searve with Origano",
+            "price": "50"
+        },
+        {
+            "name": "Super Deluxe",
+            "des" : "Searve with Origano",
+            "price": "60"
+        },
+        {
+            "name": "Seafood Cocktail",
+            "des" : "Searve with Origano",
+            "price": "40"
+        },
+        {
+            "name": "Chicken Trio",
+            "des" : "Searve with Origano",
+            "price": "20"
+        }
+    ]
+},
+
+{
+    "id":"5002",
+    "name": "papa johns snow",
+    "img": "https://firebasestorage.googleapis.com/v0/b/alpaca-one-page.appspot.com/o/Pizza%2Fpapa%20johns%20snow.jpg?alt=media&token=e5476498-6614-4991-901a-d2272152b3ad",
+    "distance": 12,
+    "status": true,
+    "star": 3,
+    "reviewer": 120 ,
+    "catagory": "Pizza",
+    "Food": [
+        {
+            "name": "Hawaiian",
+            "des" : "Searve with Origano",
+            "price": "40"
+        },
+        {
+            "name": "Seafood Deluxe",
+            "des" : "Searve with Origano",
+            "price": "50"
+        },
+        {
+            "name": "Super Deluxe",
+            "des" : "Searve with Origano",
+            "price": "60"
+        },
+        {
+            "name": "Seafood Cocktail",
+            "des" : "Searve with Origano",
+            "price": "40"
+        },
+        {
+            "name": "Chicken Trio",
+            "des" : "Searve with Origano",
+            "price": "20"
+        }
+    ]
+},
+
+{
+    "id":"5003",
+    "name": "papa johns",
+    "img": "https://firebasestorage.googleapis.com/v0/b/alpaca-one-page.appspot.com/o/Pizza%2Fpapa%20johns.png?alt=media&token=97c7353c-f99b-43a3-8252-e475d8d6c9b3",
+    "distance": 41,
+    "status":true,
+    "star": 4,
+    "reviewer": 324,
+    "catagory": "Pizza",
+    "Food": [
+        {
+            "name": "Hawaiian",
+            "des" : "Searve with Origano",
+            "price": "40"
+        },
+        {
+            "name": "Seafood Deluxe",
+            "des" : "Searve with Origano",
+            "price": "50"
+        },
+        {
+            "name": "Super Deluxe",
+            "des" : "Searve with Origano",
+            "price": "60"
+        },
+        {
+            "name": "Seafood Cocktail",
+            "des" : "Searve with Origano",
+            "price": "40"
+        },
+        {
+            "name": "Chicken Trio",
+            "des" : "Searve with Origano",
+            "price": "20"
+        }
+    ]
+},
+
+{
+    "id":"5004",
+    "name": "Pizza Hush",
+    "img": "https://firebasestorage.googleapis.com/v0/b/alpaca-one-page.appspot.com/o/Pizza%2FPizza%20Hush.jpg?alt=media&token=017bd7f1-8ffe-401d-9fe7-0acd2c53b54a",
+    "distance": 52,
+    "status":false,
+    "star": 5,
+    "reviewer": 41,
+    "catagory": "Pizza",
+    "Food": [
+        {
+            "name": "Hawaiian",
+            "des" : "Searve with Origano",
+            "price": "40"
+        },
+        {
+            "name": "Seafood Deluxe",
+            "des" : "Searve with Origano",
+            "price": "50"
+        },
+        {
+            "name": "Super Deluxe",
+            "des" : "Searve with Origano",
+            "price": "60"
+        },
+        {
+            "name": "Seafood Cocktail",
+            "des" : "Searve with Origano",
+            "price": "40"
+        },
+        {
+            "name": "Chicken Trio",
+            "des" : "Searve with Origano",
+            "price": "20"
+        }
+    ]
+},
+
+{
+    "id":"5005",
+    "name": "The Pizza Kompany",
+    "img": "https://firebasestorage.googleapis.com/v0/b/alpaca-one-page.appspot.com/o/Pizza%2FThe%20Pizza%20Kompany.jpg?alt=media&token=fabe5f40-7d42-4261-bdd1-b8bf206cd805",
+    "distance": 52,
+    "status":true,
+    "star": 1,
+    "reviewer": 41,
+    "catagory": "Pizza",
+    "Food": [
+        {
+            "name": "Hawaiian",
+            "des" : "Searve with Origano",
+            "price": "40"
+        },
+        {
+            "name": "Seafood Deluxe",
+            "des" : "Searve with Origano",
+            "price": "50"
+        },
+        {
+            "name": "Super Deluxe",
+            "des" : "Searve with Origano",
+            "price": "60"
+        },
+        {
+            "name": "Seafood Cocktail",
+            "des" : "Searve with Origano",
+            "price": "40"
+        },
+        {
+            "name": "Chicken Trio",
+            "des" : "Searve with Origano",
+            "price": "20"
+        }
+    ]
+},
+
+{
+    "id":"5006",
+    "name": "toppers",
+    "img": "https://firebasestorage.googleapis.com/v0/b/alpaca-one-page.appspot.com/o/Pizza%2Ftoppers.jpg?alt=media&token=810b01db-1fdc-40b0-a935-97db16142c70",
+    "distance": 14,
+    "status": false,
+    "star": 2,
+    "reviewer": 1,
+    "catagory": "Pizza",
+    "Food": [
+        {
+            "name": "Hawaiian",
+            "des" : "Searve with Origano",
+            "price": "40"
+        },
+        {
+            "name": "Seafood Deluxe",
+            "des" : "Searve with Origano",
+            "price": "50"
+        },
+        {
+            "name": "Super Deluxe",
+            "des" : "Searve with Origano",
+            "price": "60"
+        },
+        {
+            "name": "Seafood Cocktail",
+            "des" : "Searve with Origano",
+            "price": "40"
+        },
+        {
+            "name": "Chicken Trio",
+            "des" : "Searve with Origano",
+            "price": "20"
+        }
+    ]
+}
+]

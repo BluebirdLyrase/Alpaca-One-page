@@ -26,7 +26,7 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         var db = firebase.firestore();
-        $.get("s.json", function (data, status) {
+        $.get("Chinese.json", function (data, status) {
             for (var index in data) {
                 var Res = data[index];
                 db.collection("Resturant").doc(Res.id).set({
