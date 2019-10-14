@@ -57,7 +57,7 @@
 }
 
 .AlbackBtb{
-    margin-top:7.5px
+    margin-left:10px;
 }
 
 .tabBtn{
@@ -116,7 +116,11 @@
 
 .AlpacaIconBig{
     font-size: 30px;
-    margin-top: 14%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
     color:white;
 }
 

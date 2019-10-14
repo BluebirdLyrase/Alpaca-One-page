@@ -52,6 +52,11 @@ function buybtn(name, price) {
     }
 }
 
+function backbtn() {
+    console.log("#backbtn");
+    document.querySelector('#myNavigator').popPage();
+}
+
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         // User is signed in.
@@ -75,6 +80,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 document.addEventListener('init', function (event) {
     var page = event.target;
     console.log(page.id);
+
 
     if (page.id === "tabbar") {
         //Code for tabbar
@@ -183,7 +189,12 @@ document.addEventListener('init', function (event) {
     }
 
     if (page.id === "Food") {
-    
+
+        // $("#backbtn2").click(function () {
+        //     console.log("#backbtn");
+        //     document.querySelector('#myNavigator').popPage();
+        //     });
+        
         ID = localStorage.getItem("selected");
         /////////////////////Append Food Menu Card////////////////////////////////////
         db.collection("Resturant").doc(ID).get().then(function (doc) {
