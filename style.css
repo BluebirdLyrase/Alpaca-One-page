@@ -3,6 +3,7 @@
     -webkit-backface-visibility: hidden;
     /*--^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Need to test in real mobile device*/
   }
+
   @media not screen and (min-device-width:320px) and (max-device-width:375px) 
   and (max-device-width:414px) and (max-device-width:675px){
     .absolute{

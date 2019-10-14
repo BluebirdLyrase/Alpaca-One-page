@@ -4,9 +4,11 @@
         <ons-toolbar class="Albar">
             <ons-col width="20%">
                 <!-- Toolbar-button with different icons depending on the platform. -->
-                <ons-toolbar-button id="foodbackbtn" class="AlbackBtb">
+                <!-- <ons-toolbar-button id="backbtn2" class="AlbackBtb"> -->
+                <ons-back-button class="AlbackBtb">
                     <i class="fas fa-arrow-left AlpacaIconBig"></i>
-                </ons-toolbar-button>
+                </ons-back-button>
+                <!-- </ons-toolbar-button> -->
             </ons-col>
             <ons-col width="60%">
                 <div class="Albartext" id="title">Menu</div>
@@ -21,9 +23,8 @@
 
     <p style="margin-top:10px; text-align: center; ">
         <ons-button id="orderBtn" class="orderBtn">
-                <span class="orderText absolute">Order</span>
-        <span class="notification notification--material orderNoti" id="orderNoti"></span>
+            <span class="orderText absolute">Order</span>
+            <span class="notification notification--material orderNoti" id="orderNoti"></span>
         </ons-button>
     </p>
-
 </ons-page>

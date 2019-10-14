@@ -3,7 +3,6 @@ var item = [];
 var Resname = "";
 var ResPic = "";
 var ResStatus = false;
-var myNavigator = document.getElementById('myNavigator');
 var firebaseConfig = {
     apiKey: "AIzaSyC2pyNOOA-f53D-UCcoGQPJECnEc5SLC6g",
     authDomain: "alpaca-one-page.firebaseapp.com",
@@ -21,18 +20,18 @@ function setIDtoFoodMenu(ID) {
     // console.log("card pressed");
     localStorage.setItem("selected", ID);
     console.log(ID);
-    $("#content")[0].load('content/Food.html')
+    document.querySelector('#myNavigator').pushPage('content/Food.html')
 }
 
 function setSelectedCatagory(Catagory) {
     localStorage.setItem("selectedCatagory", Catagory);
     console.log(Catagory);
-    $("#content")[0].load('content/Result.html')
+    document.querySelector('#myNavigator').pushPage('content/Result.html')
 }
 
 function deletebtn(index) {
     item.splice(index, 1)
-    $("#content")[0].load('content/Order.html')
+    document.querySelector('#myNavigator').pushPage('content/Order.html')
 }
 
 function buybtn(name, price) {
@@ -72,7 +71,6 @@ firebase.auth().onAuthStateChanged(function (user) {
         // ...
     }
 });
-
 
 document.addEventListener('init', function (event) {
     var page = event.target;
@@ -124,12 +122,12 @@ document.addEventListener('init', function (event) {
         //Code for sidemenu
         $("#regisbtn").click(function () {
             console.log('regisbtn pressed');
-            $("#content")[0].load('content/regis.html')
+            document.querySelector('#myNavigator').pushPage('content/regis.html');
             $("#sidemenu")[0].close();
         });
         $("#loginbtn").click(function () {
             console.log('loginbtn pressed');
-            $("#content")[0].load('content/login.html')
+            document.querySelector('#myNavigator').pushPage('content/login.html');
             $("#sidemenu")[0].close();
 
         });
@@ -185,6 +183,7 @@ document.addEventListener('init', function (event) {
     }
 
     if (page.id === "Food") {
+    
         ID = localStorage.getItem("selected");
         /////////////////////Append Food Menu Card////////////////////////////////////
         db.collection("Resturant").doc(ID).get().then(function (doc) {
@@ -233,22 +232,12 @@ document.addEventListener('init', function (event) {
 
         /////////////////////End of Append Food Menu Card////////////////////////////////////
 
-        $("#foodbackbtn").click(function () {
-            item = [];
-            Back = localStorage.getItem("back");
-            if (Back == "Result.html") {
-                $("#content")[0].load('content/Result.html')
-            } else {
-                document.querySelector('ons-navigator').resetToPage('splitter.html');
-            }
-        });
-
         $("#orderBtn").click(function () {
             var user = firebase.auth().currentUser;
             if(!user){
             ons.notification.alert('Please Sign-in! before place order');
             }else if(ResStatus){
-            $("#content")[0].load('content/Order.html')
+            document.querySelector('#myNavigator').pushPage('content/Order.html');
             }else{
             ons.notification.alert('This Resturant is close');
             }
@@ -335,8 +324,7 @@ document.addEventListener('init', function (event) {
         });
 
         $("#regisbtn2").click(function () {
-            // console.log('regisbtn pressed');
-            $("#content")[0].load('content/regis.html')
+            document.querySelector('#myNavigator').pushPage('content/regis.html');
         });
     }
 
@@ -386,19 +374,8 @@ document.addEventListener('init', function (event) {
         });
         $("#total").append('<b>Total : </b> ฿ ' + total);
 
-        $("#orderbackbtn").click(function () {
-            $("#content")[0].load('content/Food.html')
-        });
-
     }
 
-
-
-
-
-    $("#backbtn").click(function () {
-        document.querySelector('ons-navigator').resetToPage('splitter.html');
-    });
 
 
 
