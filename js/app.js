@@ -30,9 +30,10 @@ function setSelectedCatagory(Catagory) {
 }
 
 function deletebtn(index,name) {
-    item.splice(index, 1);
+    item.splice(index, 1).then(function() {
     ons.notification.alert(name + ' has been removed');
     document.querySelector('#myNavigator').replacePage('content/Order.html');
+    });
 }
 
 function buybtn(name, price) {
