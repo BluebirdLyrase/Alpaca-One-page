@@ -32,7 +32,7 @@ function setSelectedCatagory(Catagory) {
 function deletebtn(index,name) {
     item.splice(index, 1);
     ons.notification.alert(name + ' has been removed');
-    document.querySelector('#myNavigator').pushPage('content/Order.html');
+    document.querySelector('#myNavigator').replacePage('content/Order.html');
 }
 
 function buybtn(name, price) {
