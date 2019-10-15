@@ -30,9 +30,9 @@ function setSelectedCatagory(Catagory) {
 }
 
 function deletebtn(index) {
-    item.splice(index, 1);
-    document.querySelector('#myNavigator').pushPage('content/Order.html')
-
+    item.splice(index, 1).then(function(env) {
+    document.querySelector('#myNavigator').pushPage('content/Order.html');
+});
 }
 
 function buybtn(name, price) {
