@@ -380,7 +380,7 @@ document.addEventListener('init', function (event) {
             <td style="color:grey">${item[0]}</td>
             <td align="center" style="color:grey">${item[1]}</td>
             <td>
-            <div class="deletebtn" onclick="deletebtn(${index},"${item[0]}")">x</div>
+            <div class="deletebtn" onclick="deletebtn(${index},'${item[0]}')">x</div>
             </td>
             </tr>`;
             $("#orderTable").append(orderTable);
