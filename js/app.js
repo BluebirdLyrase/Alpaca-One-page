@@ -31,6 +31,9 @@ function setSelectedCatagory(Catagory) {
 
 function deletebtn(index) {
     item.splice(index, 1);
+    document.querySelector('#myNavigator').popPage();
+    document.querySelector('#myNavigator').pushPage('content/Order.html')
+
 }
 
 function buybtn(name, price) {
