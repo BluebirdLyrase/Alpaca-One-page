@@ -32,22 +32,34 @@ function setSelectedCatagory(Catagory) {
 function deletebtn(index,name) {
     item.splice(index, 1);
     ons.notification.alert(name + ' has been removed');
-    var total = 0;
-        $("#orderTable").empty();
-        item.forEach((item, index) => {
-            var orderTable = `<tr>              
-            <td style="color:grey">${item[0]}</td>
-            <td align="center" style="color:grey">${item[1]}</td>
-            <td>
-            <div class="deletebtn" onclick="deletebtn(${index},'${item[0]}')">x</div>
-            </td>
-            </tr>`;
-            $("#orderTable").append(orderTable);
-            total = total + item[1];
-        });
-        $("#total").empty();
-        $("#total").append('<b>Total : </b> ฿ ' + total);
+    orderTable();
+}
 
+function orderTable(){
+    var total = 0;
+    $("#orderTable").empty();
+    tablehead = "<th>Name of dish</th><th>Price</th>";
+    $("#orderTable").append(tablehead);
+    item.forEach((item, index) => {
+        var orderTable = `<tr>              
+        <td style="color:grey">${item[0]}</td>
+        <td style="color:grey">${item[1]}</td>
+        <td>
+        <div class="deletebtn" onclick="deletebtn(${index},'${item[0]}')">x</div>
+        </td>
+        </tr>`;
+        $("#orderTable").append(orderTable);
+        total = total + item[1];
+    });
+    $("#total").empty();
+    $("#total").append('<b>Total : </b> ฿ ' + total);
+}
+
+function itemNoti(){
+    if(item.length!=0){
+        $("#orderNoti").empty();
+        $("#orderNoti").append(item.length);
+        }
 }
 
 function buybtn(name, price) {
@@ -59,17 +71,13 @@ function buybtn(name, price) {
     item.push([name, price]);
     console.log(item);
     ons.notification.alert(name + ' (฿' + price + ') ' + 'has been added');
-    if(item.length!=0){
-        $("#orderNoti").empty();
-        $("#orderNoti").append(item.length);
-        }
+    itemNoti();
     }else{
     ons.notification.alert('This Resturant is close');
     }
 }
 
 function backbtn() {
-    console.log("#backbtn");
     document.querySelector('#myNavigator').popPage();
 }
 
@@ -171,7 +179,6 @@ document.addEventListener('init', function (event) {
         localStorage.setItem("back", "Result.html");
         Catagory = localStorage.getItem("selectedCatagory");
         db.collection("Resturant").where("catagory", "==", Catagory)
-            // .orderBy("star","desc")
             .get().then((querySnapshot) => {
                 $('#Resturantcard').empty();
                 querySnapshot.forEach((doc) => {
@@ -205,11 +212,6 @@ document.addEventListener('init', function (event) {
     }
 
     if (page.id === "Food") {
-
-        // $("#backbtn2").click(function () {
-        //     console.log("#backbtn");
-        //     document.querySelector('#myNavigator').popPage();
-        //     });
         
         ID = localStorage.getItem("selected");
         /////////////////////Append Food Menu Card////////////////////////////////////
@@ -388,21 +390,7 @@ document.addEventListener('init', function (event) {
         $("#Resname").empty();
         $("#Resname").append(Resname);
         $("#ResPic").attr('src', ResPic);
-        var total = 0;
-        $("#orderTable").empty();
-        item.forEach((item, index) => {
-            var orderTable = `<tr>              
-            <td style="color:grey">${item[0]}</td>
-            <td align="center" style="color:grey">${item[1]}</td>
-            <td>
-            <div class="deletebtn" onclick="deletebtn(${index},'${item[0]}')">x</div>
-            </td>
-            </tr>`;
-            $("#orderTable").append(orderTable);
-            total = total + item[1];
-        });
-        $("#total").empty();
-        $("#total").append('<b>Total : </b> ฿ ' + total);
+        orderTable();
 
     }
 
