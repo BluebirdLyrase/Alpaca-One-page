@@ -32,6 +32,22 @@ function setSelectedCatagory(Catagory) {
 function deletebtn(index,name) {
     item.splice(index, 1);
     ons.notification.alert(name + ' has been removed');
+    var total = 0;
+        $("#orderTable").empty();
+        item.forEach((item, index) => {
+            var orderTable = `<tr>              
+            <td style="color:grey">${item[0]}</td>
+            <td align="center" style="color:grey">${item[1]}</td>
+            <td>
+            <div class="deletebtn" onclick="deletebtn(${index},'${item[0]}')">x</div>
+            </td>
+            </tr>`;
+            $("#orderTable").append(orderTable);
+            total = total + item[1];
+        });
+        $("#total").empty();
+        $("#total").append('<b>Total : </b> ฿ ' + total);
+
 }
 
 function buybtn(name, price) {
