@@ -31,7 +31,6 @@ function setSelectedCatagory(Catagory) {
 
 function deletebtn(index) {
     item.splice(index, 1);
-    document.querySelector('#myNavigator').popPage();
     document.querySelector('#myNavigator').pushPage('content/Order.html')
 
 }
@@ -374,6 +373,7 @@ document.addEventListener('init', function (event) {
         $("#Resname").append(Resname);
         $("#ResPic").attr('src', ResPic);
         var total = 0;
+        $("#orderTable").empty();
         item.forEach((item, index) => {
             var orderTable = `<tr>              
             <td style="color:grey">${item[0]}</td>
@@ -385,6 +385,7 @@ document.addEventListener('init', function (event) {
             $("#orderTable").append(orderTable);
             total = total + item[1];
         });
+        $("#total").empty();
         $("#total").append('<b>Total : </b> ฿ ' + total);
 
     }
