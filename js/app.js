@@ -31,7 +31,6 @@ function setSelectedCatagory(Catagory) {
 
 function deletebtn(index,name) {
     item.splice(index, 1);
-    ons.notification.alert(name + ' has been removed');
     orderTable();
 }
 
