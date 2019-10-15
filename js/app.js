@@ -29,10 +29,10 @@ function setSelectedCatagory(Catagory) {
     document.querySelector('#myNavigator').pushPage('content/Result.html')
 }
 
-function deletebtn(index) {
-    item.splice(index, 1).then(function(env) {
+function deletebtn(index,name) {
+    item.splice(index, 1);
+    ons.notification.alert(name + ' has been removed');
     document.querySelector('#myNavigator').pushPage('content/Order.html');
-});
 }
 
 function buybtn(name, price) {
@@ -370,6 +370,7 @@ document.addEventListener('init', function (event) {
     }
 
     if (page.id === "Order") {
+        $("#Resname").empty();
         $("#Resname").append(Resname);
         $("#ResPic").attr('src', ResPic);
         var total = 0;
@@ -379,7 +380,7 @@ document.addEventListener('init', function (event) {
             <td style="color:grey">${item[0]}</td>
             <td align="center" style="color:grey">${item[1]}</td>
             <td>
-            <div class="deletebtn" onclick="deletebtn(${index})">x</div>
+            <div class="deletebtn" onclick="deletebtn(${index},${item[0]})">x</div>
             </td>
             </tr>`;
             $("#orderTable").append(orderTable);
