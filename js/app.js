@@ -58,6 +58,8 @@ function itemNoti(){
     if(item.length!=0){
         $("#orderNoti").empty();
         $("#orderNoti").append(item.length);
+        }else{
+        $("#orderNoti").empty();  
         }
 }
 
@@ -94,14 +96,6 @@ function backbtnconfirm() {
 
 
 }
-
-function successCallback() {
-    console.log("Audio file ready at URL: ");
-  }
-  
-  function failureCallback() {
-    console.error("Error generating audio file: ");
-  }
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
@@ -304,9 +298,9 @@ document.addEventListener('init', function (event) {
         db.collection("Resturant").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 if (doc.data().status && doc.data().star >= 4) {
-                    var carousel = `<ons-carousel-item modifier="nodivider" id="item1" class="recomended_item" onclick="setIDtoFoodMenu('${doc.id}')">
+                    var carousel = `<ons-carousel-item modifier="nodivider" class="recomended_item" onclick="setIDtoFoodMenu('${doc.id}')">
             <img  src=${doc.data().img}alt="Onsen UI" class="thumbnail">
-            <div class="recomended_item_title" id="item1_name">${doc.data().name}</div>
+            <div class="recomended_item_title" >${doc.data().name}</div>
             </ons-carousel-item>`;
                     $('#carousel').append(carousel);
                     $('#Recommended').append(carousel);
