@@ -80,6 +80,29 @@ function backbtn() {
     document.querySelector('#myNavigator').popPage();
 }
 
+function backbtnconfirm() {
+    ons.notification.confirm({
+        message: 'your order will be reset!',
+        callback: function(answer) {
+            if(answer==1){
+            item = [];
+            document.querySelector('#myNavigator').popPage();
+        }
+        }
+      });
+
+
+
+}
+
+function successCallback() {
+    console.log("Audio file ready at URL: ");
+  }
+  
+  function failureCallback() {
+    console.error("Error generating audio file: ");
+  }
+
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         // User is signed in.
@@ -92,7 +115,6 @@ firebase.auth().onAuthStateChanged(function (user) {
         var uid = user.uid;
         var providerData = user.providerData;
         ons.notification.alert('Successfully Sign-in!');
-        // document.querySelector('ons-navigator').resetToPage('splitter.html');
         // ...
     } else {
         // User is signed out.
@@ -175,7 +197,6 @@ document.addEventListener('init', function (event) {
 
 
     if (page.id === "Result") {
-        localStorage.setItem("back", "Result.html");
         Catagory = localStorage.getItem("selectedCatagory");
         db.collection("Resturant").where("catagory", "==", Catagory)
             .get().then((querySnapshot) => {
@@ -280,7 +301,6 @@ document.addEventListener('init', function (event) {
 
 
     if (page.id === "Recommended") {
-        localStorage.setItem("back", "splitter.html");
         db.collection("Resturant").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 if (doc.data().status && doc.data().star >= 4) {
