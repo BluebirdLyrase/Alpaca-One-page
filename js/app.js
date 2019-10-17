@@ -29,12 +29,12 @@ function setSelectedCatagory(Catagory) {
     document.querySelector('#myNavigator').pushPage('content/Result.html')
 }
 
-function deletebtn(index,name) {
+function deletebtn(index, name) {
     item.splice(index, 1);
     orderTable();
 }
 
-function orderTable(){
+function orderTable() {
     var total = 0;
     $("#orderTable").empty();
     tablehead = "<th>Name of dish</th><th>Price</th>";
@@ -54,27 +54,27 @@ function orderTable(){
     $("#total").append('<b>Total : </b> ฿ ' + total);
 }
 
-function itemNoti(){
-    if(item.length!=0){
+function itemNoti() {
+    if (item.length != 0) {
         $("#orderNoti").empty();
         $("#orderNoti").append(item.length);
-        }else{
-        $("#orderNoti").empty();  
-        }
+    } else {
+        $("#orderNoti").empty();
+    }
 }
 
 function buybtn(name, price) {
     console.log(ResStatus);
     var user = firebase.auth().currentUser;
-    if(!user){
-    ons.notification.alert('Please Sign-in! before place order');
-    }else if(ResStatus){
-    item.push([name, price]);
-    console.log(item);
-    ons.notification.alert(name + ' (฿' + price + ') ' + 'has been added');
-    itemNoti();
-    }else{
-    ons.notification.alert('This Resturant is close');
+    if (!user) {
+        ons.notification.alert('Please Sign-in! before place order');
+    } else if (ResStatus) {
+        item.push([name, price]);
+        console.log(item);
+        ons.notification.alert(name + ' (฿' + price + ') ' + 'has been added');
+        itemNoti();
+    } else {
+        ons.notification.alert('This Resturant is close');
     }
 }
 
@@ -83,15 +83,19 @@ function backbtn() {
 }
 
 function backbtnconfirm() {
-    ons.notification.confirm({
-        message: 'your order will be reset!',
-        callback: function(answer) {
-            if(answer==1){
-            item = [];
-            document.querySelector('#myNavigator').popPage();
-        }
-        }
-      });
+    if (item.length != 0) {
+        ons.notification.confirm({
+            message: 'your order will be reset!',
+            callback: function (answer) {
+                if (answer == 1) {
+                    item = [];
+                    document.querySelector('#myNavigator').popPage();
+                }
+            }
+        });
+    } else {
+        document.querySelector('#myNavigator').popPage();
+    }
 
 
 
@@ -226,7 +230,7 @@ document.addEventListener('init', function (event) {
     }
 
     if (page.id === "Food") {
-        
+
         ID = localStorage.getItem("selected");
         /////////////////////Append Food Menu Card////////////////////////////////////
         db.collection("Resturant").doc(ID).get().then(function (doc) {
@@ -277,17 +281,17 @@ document.addEventListener('init', function (event) {
 
         $("#orderBtn").click(function () {
             var user = firebase.auth().currentUser;
-            if(!user){
-            ons.notification.alert('Please Sign-in! before place order');
-            }else if(ResStatus){
-            document.querySelector('#myNavigator').pushPage('content/Order.html');
-            }else{
-            ons.notification.alert('This Resturant is close');
+            if (!user) {
+                ons.notification.alert('Please Sign-in! before place order');
+            } else if (ResStatus) {
+                document.querySelector('#myNavigator').pushPage('content/Order.html');
+            } else {
+                ons.notification.alert('This Resturant is close');
             }
         });
-        if(item.length!=0){
-        $("#orderNoti").empty();
-        $("#orderNoti").append(item.length);
+        if (item.length != 0) {
+            $("#orderNoti").empty();
+            $("#orderNoti").append(item.length);
         }
     }
 
@@ -334,8 +338,9 @@ document.addEventListener('init', function (event) {
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 // ...
-                console.log(errorCode);
-                console.log(errorMessage);
+                console.log('errorCode :' + errorCode);
+                console.log('errorMessage:' + errorMessage);
+                ons.notification.alert('Incorrect Email or Password');
             });
 
         });
@@ -361,6 +366,7 @@ document.addEventListener('init', function (event) {
                 // The firebase.auth.AuthCredential type that was used.
                 var credential = error.credential;
                 // ...
+                ons.notification.alert('Something went wrong please try agian later');
             });
             document.querySelector('ons-navigator').resetToPage('splitter.html');
         });
