@@ -1,4 +1,6 @@
 // Your web app's Firebase configuration
+var selectedID ;
+var selectedCatagory ;
 var item = [];
 var Resname = "";
 var ResPic = "";
@@ -17,15 +19,14 @@ firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 
 function setIDtoFoodMenu(ID) {
-    // console.log("card pressed");
-    localStorage.setItem("selected", ID);
-    console.log(ID);
+    selectedID = ID
+    console.log(selectedID);
     document.querySelector('#myNavigator').pushPage('content/Food.html')
 }
 
 function setSelectedCatagory(Catagory) {
-    localStorage.setItem("selectedCatagory", Catagory);
-    console.log(Catagory);
+    selectedCatagory = Catagory;
+    console.log(selectedCatagory);
     document.querySelector('#myNavigator').pushPage('content/Result.html')
 }
 
@@ -195,8 +196,7 @@ document.addEventListener('init', function (event) {
 
 
     if (page.id === "Result") {
-        Catagory = localStorage.getItem("selectedCatagory");
-        db.collection("Resturant").where("catagory", "==", Catagory)
+        db.collection("Resturant").where("catagory", "==", selectedCatagory)
             .get().then((querySnapshot) => {
                 $('#Resturantcard').empty();
                 querySnapshot.forEach((doc) => {
@@ -231,9 +231,8 @@ document.addEventListener('init', function (event) {
 
     if (page.id === "Food") {
 
-        ID = localStorage.getItem("selected");
         /////////////////////Append Food Menu Card////////////////////////////////////
-        db.collection("Resturant").doc(ID).get().then(function (doc) {
+        db.collection("Resturant").doc(selectedID).get().then(function (doc) {
             ResStatus = doc.data().status;
             Resname = doc.data().name;
             ResPic = doc.data().img;
@@ -263,7 +262,7 @@ document.addEventListener('init', function (event) {
             // console.log(Menucard);
             $('#foodcard').append(Menucard);
         });
-        db.collection("Resturant").doc(ID).collection("Food").get().then((querySnapshot) => {
+        db.collection("Resturant").doc(selectedID).collection("Food").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 Foodcard = `<ons-row><ons-col width="60%">
              <div style="font-size: 15px; margin-top:10px;">${doc.data().name}</div>
