@@ -1,3 +1,5 @@
+console.log('Alpaca Onsen Webapp ver 0.2.0');
+
 // Your web app's Firebase configuration
 var selectedID ;
 var selectedCatagory ;
