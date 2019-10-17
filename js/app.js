@@ -1,8 +1,8 @@
 console.log('Alpaca Onsen Webapp ver 0.2.0');
 
 // Your web app's Firebase configuration
-var selectedID ;
-var selectedCatagory ;
+var selectedID;
+var selectedCatagory;
 var item = [];
 var Resname = "";
 var ResPic = "";
@@ -308,12 +308,10 @@ document.addEventListener('init', function (event) {
             <div class="recomended_item_title" >${doc.data().name}</div>
             </ons-carousel-item>`;
                     $('#carousel').append(carousel);
-                    $('#Recommended').append(carousel);
                 }
             });
         });
         db.collection("Category").get().then((querySnapshot) => {
-            $('#categorycard').empty();
             querySnapshot.forEach((doc) => {
                 var Categorycard = `<ons-col width="50%" style="height: 80%;">
                 <ons-card style="width: 90%;height: 90%; text-align: center;" onclick="setSelectedCatagory('${doc.data().name}')">
@@ -333,7 +331,6 @@ document.addEventListener('init', function (event) {
             console.log("signinbtn pressed");
             var username = document.getElementById('username').value;
             var password = document.getElementById('password').value;
-
             firebase.auth().signInWithEmailAndPassword(username, password).catch(function (error) {
                 // Handle Errors here.
                 var errorCode = error.code;
@@ -343,7 +340,6 @@ document.addEventListener('init', function (event) {
                 console.log('errorMessage:' + errorMessage);
                 ons.notification.alert('Incorrect Email or Password');
             });
-
         });
 
         var provider = new firebase.auth.GoogleAuthProvider();
@@ -369,7 +365,6 @@ document.addEventListener('init', function (event) {
                 // ...
                 ons.notification.alert('Something went wrong please try agian later');
             });
-            document.querySelector('ons-navigator').resetToPage('splitter.html');
         });
 
         $("#regisbtn2").click(function () {
