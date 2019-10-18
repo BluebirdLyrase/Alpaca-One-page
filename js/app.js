@@ -99,8 +99,40 @@ function backbtnconfirm() {
     } else {
         document.querySelector('#myNavigator').popPage();
     }
+}
 
+function createCard(id, img, name, distance, star, status) {
 
+    var card = `<ons-card style="height : auto; margin-top:0px;" onclick="setIDtoFoodMenu('${id}')"><ons-row>
+    <ons-col width="25%"><img src=${img}} alt="Onsen UI"style="width: 65px; height :55px;"></ons-col>
+    <ons-col width="75%">
+    <div style="font-size: 17px; white-space: nowrap;">&nbsp;&nbsp;<b>${name}</b></div>
+    <div style="color:grey">&nbsp;&nbsp;&nbsp;Distance : ${distance}  km</div>
+    <ons-row>&nbsp;&nbsp;
+    <ons-col width="50%">` //for starrate
+    for (var i = star; i > 0; i--) {
+        card += '<i class="fas fa-star star"></i>';
+    }
+    for (var i = (5 - star); i > 0; i--) {
+        card += '<i class="fas fa-star grey"></i>';
+    }
+    card += '</ons-col>';
+    if (status) card += '<ons-col width="45%"  class="open" ><b>Open</b></ons-col>';
+    else card += '<ons-col width="45%"  class="close" ><b>Close</b></ons-col>';
+    card += '</ons-row></ons-col></ons-row></ons-card>';
+    return card;
+}
+
+function Search(name) {
+
+    db.collection("Resturant").where("name", "==", name).get().then((querySnapshot) => {
+        $('#Searchcard').empty();
+        querySnapshot.forEach((doc) => {
+            /////////////////////Append Resturant Card////////////////////////////////////
+            var Rescard = createCard(doc.id, doc.data().img, doc.data().name, doc.data().distance, doc.data().star, doc.data().status);
+            $('#Searchcard').append(Rescard);
+        });
+    });
 
 }
 
@@ -202,26 +234,7 @@ document.addEventListener('init', function (event) {
             .get().then((querySnapshot) => {
                 $('#Resturantcard').empty();
                 querySnapshot.forEach((doc) => {
-                    /////////////////////Append Resturant Card////////////////////////////////////
-                    var Rescard = `<ons-card style="height : auto; margin-top:0px;" onclick="setIDtoFoodMenu('${doc.id}')"><ons-row>
-                    <ons-col width="25%"><img src=${doc.data().img}} alt="Onsen UI"style="width: 65px; height :55px;"></ons-col>
-                    <ons-col width="75%">
-                    <div style="font-size: 17px; white-space: nowrap;">&nbsp;&nbsp;<b>${doc.data().name}</b></div>
-                    <div style="color:grey">&nbsp;&nbsp;&nbsp;Distance : ${doc.data().distance}  km</div>
-                    <ons-row>&nbsp;&nbsp;
-                    <ons-col width="50%">` //for starrate
-                    for (var i = doc.data().star; i > 0; i--) {
-                        Rescard += '<i class="fas fa-star star"></i>';
-                    }
-                    for (var i = (5 - doc.data().star); i > 0; i--) {
-                        Rescard += '<i class="fas fa-star grey"></i>';
-                    }
-                    Rescard += '</ons-col>';
-                    if (doc.data().status) Rescard += '<ons-col width="45%"  class="open" ><b>Open</b></ons-col>';
-                    else Rescard += '<ons-col width="45%"  class="close" ><b>Close</b></ons-col>';
-
-                    Rescard += '</ons-row></ons-col></ons-row></ons-card>'
-                    // console.log(Rescard);
+                    Rescard = createCard(doc.id, doc.data().img, doc.data().name, doc.data().distance, doc.data().star, doc.data().status);
                     $('#Resturantcard').append(Rescard);
                 });
             });
@@ -409,8 +422,16 @@ document.addEventListener('init', function (event) {
 
     }
 
-
-
+    if (page.id === "NearBy") {
+        db.collection("Resturant").orderBy("distance").get().then((querySnapshot) => {
+            $('#Nearbycard').empty();
+            querySnapshot.forEach((doc) => {
+                /////////////////////Append Resturant Card////////////////////////////////////
+                var Rescard = createCard(doc.id, doc.data().img, doc.data().name, doc.data().distance, doc.data().star, doc.data().status);
+                $('#Nearbycard').append(Rescard);
+            });
+        });
+    }
 
 });
 
