@@ -1,12 +1,7 @@
 console.log('Alpaca Onsen Webapp ver 0.2.0');
 
 // Your web app's Firebase configuration
-var selectedID;
-var selectedCatagory;
 var item = [];
-var Resname = "";
-var ResPic = "";
-var ResStatus = false;
 var firebaseConfig = {
     apiKey: "AIzaSyC2pyNOOA-f53D-UCcoGQPJECnEc5SLC6g",
     authDomain: "alpaca-one-page.firebaseapp.com",
@@ -21,14 +16,12 @@ firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 
 function setIDtoFoodMenu(ID) {
-    selectedID = ID
-    console.log(selectedID);
+    localStorage.setItem("selectedID", ID);
     document.querySelector('#myNavigator').pushPage('content/Food.html')
 }
 
 function setSelectedCatagory(Catagory) {
-    selectedCatagory = Catagory;
-    console.log(selectedCatagory);
+    localStorage.setItem("selectedCatagory", Catagory);
     document.querySelector('#myNavigator').pushPage('content/Result.html')
 }
 
@@ -67,6 +60,7 @@ function itemNoti() {
 }
 
 function buybtn(name, price) {
+    var ResStatus = localStorage.getItem("ResStatus");
     console.log(ResStatus);
     var user = firebase.auth().currentUser;
     if (!user) {
@@ -230,6 +224,7 @@ document.addEventListener('init', function (event) {
 
 
     if (page.id === "Result") {
+        var selectedCatagory = localStorage.getItem("selectedCatagory");
         db.collection("Resturant").where("catagory", "==", selectedCatagory)
             .get().then((querySnapshot) => {
                 $('#Resturantcard').empty();
@@ -247,10 +242,11 @@ document.addEventListener('init', function (event) {
     if (page.id === "Food") {
 
         /////////////////////Append Food Menu Card////////////////////////////////////
+        var selectedID = localStorage.getItem("selectedID");
         db.collection("Resturant").doc(selectedID).get().then(function (doc) {
-            ResStatus = doc.data().status;
-            Resname = doc.data().name;
-            ResPic = doc.data().img;
+            localStorage.setItem("ResStatus", doc.data().status);
+            localStorage.setItem("Resname", doc.data().name);
+            localStorage.setItem("ResPic", doc.data().img);
             var Menucard = `<div style="text-align: center">
             <div style="font-size: 18px; margin-bottom:5px; text-align: center;"><b>${doc.data().name}</b></div>
             <img src=${doc.data().img} alt="Onsen UI"style="width: 80%; height :auto; text-align: center">
@@ -294,6 +290,7 @@ document.addEventListener('init', function (event) {
         /////////////////////End of Append Food Menu Card////////////////////////////////////
 
         $("#orderBtn").click(function () {
+            var ResStatus = localStorage.getItem("ResStatus");
             var user = firebase.auth().currentUser;
             if (!user) {
                 ons.notification.alert('Please Sign-in! before place order');
@@ -415,6 +412,8 @@ document.addEventListener('init', function (event) {
     }
 
     if (page.id === "Order") {
+        var Resname = localStorage.getItem("Resname");
+        var ResPic = localStorage.getItem("ResPic");
         $("#Resname").empty();
         $("#Resname").append(Resname);
         $("#ResPic").attr('src', ResPic);
