@@ -1,4 +1,4 @@
-console.log('Alpaca Onsen Webapp ver 0.2.0');
+console.log('Alpaca Onsen Webapp ver 0.2.1');
 
 // Your web app's Firebase configuration
 var item = [];
