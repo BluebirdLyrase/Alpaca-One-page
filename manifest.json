@@ -1,8 +1,8 @@
 {
   "name": "Alpaca Food",
   "short_name": "Alpaca",
-  "theme_color": "#2196f3",
-  "background_color": "#2196f3",
+  "theme_color": "#FFA31A",
+  "background_color": "#FFA31A",
   "display": "standalone",
   "Scope": "/",
   "start_url": "/index.html",
